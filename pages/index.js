@@ -33,10 +33,12 @@ export default function Home() {
             </a>
           </Link>
 
-          <a href="/" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn how to make a new assignment or document.</p>
-          </a>
+          <Link href="/learn">
+            <a className={styles.card}>
+              <h2>Learn &rarr;</h2>
+              <p>Learn how to make a new assignment or document.</p>
+            </a>
+          </Link>
 
           {/* <a
             href="https://github.com/vercel/next.js/tree/master/examples"
