@@ -1,9 +1,9 @@
 .nav {
-    min-height: 40px;
+    min-height: 48px;
     width: 100%;
     position: fixed;
     top: 0;
-    box-shadow: 0px 0px 1px 1px #eaeaeab7;
+    box-shadow: 0px 0px 1px 1px #7c7c7c69;
     display: flex;
     justify-content: space-between;
     align-items: center;
