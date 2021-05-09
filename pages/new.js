@@ -9,7 +9,7 @@ export default function New() {
                 <title>Assignmentium | Create</title>
             </Head>
 
-            <Nav linkTo="/" navTitle="Create New Assignment" />
+            <Nav linkTo="/" navTitle="Create" />
         </div>
     )
 }

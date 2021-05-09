@@ -42,7 +42,7 @@
 .title a:hover,
 .title a:focus,
 .title a:active {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .title {
@@ -134,7 +134,7 @@
   }
 
   .footer {
-    margin: 12px 0;
+    margin: 12px auto;
     flex-direction: column;
   }
 }

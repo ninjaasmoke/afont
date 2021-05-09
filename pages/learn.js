@@ -9,7 +9,7 @@ export default function Learn() {
                 <title>Assignmentium | Learn</title>
             </Head>
 
-            <Nav linkTo="/" navTitle="Learn how to use assignmentium" />
+            <Nav linkTo="/" navTitle="Learn" />
         </div>
     )
 }
