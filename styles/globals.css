@@ -11,6 +11,13 @@ a {
   text-decoration: none;
 }
 
+a:hover,
+a:focus,
+a:active {
+  color: #0070f3;
+  border-color: #0070f3;
+}
+
 * {
   box-sizing: border-box;
 }

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -27,10 +28,12 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <a href="/" className={styles.card}>
-            <h2>New Assignment &rarr;</h2>
-            <p>Create a new assignment or document.</p>
-          </a>
+          <Link href="/new">
+            <a className={styles.card}>
+              <h2>New Assignment &rarr;</h2>
+              <p>Create a new assignment or document.</p>
+            </a>
+          </Link>
 
           <a href="/" className={styles.card}>
             <h2>Learn &rarr;</h2>
