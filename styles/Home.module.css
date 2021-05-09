@@ -114,8 +114,27 @@
 }
 
 @media (max-width: 600px) {
+
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .description {
+    padding: 0px 32px;
+    font-size: 1rem;
+  }
+
   .grid {
     width: 100%;
+    flex-direction: column;
+  }
+
+  .card {
+    width: 75%;
+  }
+
+  .footer {
+    margin: 12px 0;
     flex-direction: column;
   }
 }

@@ -36,3 +36,9 @@
 .navRSpace {
     width: 90px;
 }
+
+@media (max-width: 600px) {
+    .nav {
+        min-height: 52px;
+    }
+}
