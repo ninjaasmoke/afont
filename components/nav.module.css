@@ -12,7 +12,7 @@
 
 .nav a {
     font-size: .9rem;
-    width: 90px;
+    width: 50px;
 }
 
 .nav a::after {
@@ -34,7 +34,7 @@
 }
 
 .navRSpace {
-    width: 90px;
+    width: 50px;
 }
 
 @media (max-width: 600px) {
