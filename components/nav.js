@@ -7,9 +7,9 @@ export default function Nav({ linkTo, navTitle }) {
             <Link href={linkTo}>
                 <a>&larr; Back</a>
             </Link>
-            <span className={styles.navTitle}>
+            <h4 className={styles.navTitle}>
                 {navTitle}
-            </span>
+            </h4>
             <span className={styles.navRSpace}></span>
         </nav>
     )
