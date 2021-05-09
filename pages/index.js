@@ -20,7 +20,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Got bored of writing too many assignments? Too much to write?
+          Bored of writing too many assignments?
           <br />
           Just choose your favorite handwriting, paste your text, and your assignment is ready to go.
         </p>
