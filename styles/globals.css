@@ -1,3 +1,8 @@
+::selection {
+  color: white;
+  background: #0070f3;
+} 
+
 html,
 body {
   padding: 0;
@@ -14,11 +19,6 @@ body {
   color: var(--color);
   transition: background-color 500ms;
 }
-
-::selection {
-  color: white;
-  background: #0070f3;
-} 
 
 a {
   color: inherit;
@@ -40,7 +40,7 @@ a:active {
 .toggle {
   z-index: 10;
   position: fixed;
-  top: 8px;
+  top: 9px;
   right: 12px;
   --size: 1.5rem;
   -webkit-appearance: none;
@@ -61,9 +61,9 @@ a:active {
 }
 
 .toggle:checked {
+  color: #181818;
   transform: scale(1);
   box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
-  color: #bfbfd3;
 }
 
 .toggle:checked ~ .background {
