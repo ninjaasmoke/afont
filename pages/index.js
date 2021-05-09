@@ -22,8 +22,6 @@ export default function Home() {
         <p className={styles.description}>
           Got bored of writing too many assignments? Too much to write?
           <br />
-          Worry not, ASSIGNMENTIUM is here!
-          <br />
           Just choose your favorite handwriting, paste your text, and your assignment is ready to go.
         </p>
 

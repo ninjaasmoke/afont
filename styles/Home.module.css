@@ -23,7 +23,7 @@
   border-top: 1px solid #eaeaea;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   padding: 20px;
 }
@@ -32,7 +32,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
+}
+
+.footer a:hover {
+  color: #181818;
 }
 
 .title a {
@@ -64,9 +67,7 @@
 }
 
 .code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.5rem;
+  padding: 0px 0.5rem;
   font-size: 1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;

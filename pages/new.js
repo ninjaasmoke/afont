@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Link from 'next/link'
+import Nav from '../components/nav'
 import styles from '../styles/New.module.css'
 
 export default function New() {
@@ -9,15 +9,7 @@ export default function New() {
                 <title>Assignmentium | Create new assignment</title>
             </Head>
 
-            <nav className={styles.nav}>
-                <Link href="/">
-                    <a>&larr; Back Home</a>
-                </Link>
-                <span className={styles.navTitle}>
-                    Create New Assignment
-                </span>
-                <span className={styles.navRSpace}></span>
-            </nav>
+            <Nav linkTo="/" navTitle="Create New Assignment" />
         </div>
     )
 }
