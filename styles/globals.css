@@ -73,6 +73,6 @@ a:active {
 
 @media (max-width: 600px) {
   .toggle {
-    top: 12px;
+    top: 8px;
   }
 }

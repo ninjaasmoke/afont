@@ -39,6 +39,20 @@ export default function Home() {
               <p>Learn how to make a new assignment or document.</p>
             </a>
           </Link>
+
+          {/* <a href="/" target="_blank" rel="noopener noreferrer" className={styles.card}>
+            <h2>Github &rarr;</h2>
+            <p>Contribute or see how the app works.</p>
+          </a>
+
+          <a
+            href="/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.card}>
+            <h2>Donate &rarr;</h2>
+            <p>Donate to development.</p>
+          </a> */}
         </div>
       </main>
 
