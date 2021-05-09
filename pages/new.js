@@ -6,7 +6,7 @@ export default function New() {
     return (
         <div className={styles.container}>
             <Head>
-                <title>Assignmentium | Create new assignment</title>
+                <title>Assignmentium | Create</title>
             </Head>
 
             <Nav linkTo="/" navTitle="Create New Assignment" />
