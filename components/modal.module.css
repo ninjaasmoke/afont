@@ -18,7 +18,7 @@
 .modalSheet {
     width: 100%;
     padding: 20px;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     background-color: white;
     color: black;
@@ -91,5 +91,11 @@
 
     .modalText {
         text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .modalSheet {
+        /* padding-bottom: 100px; */
     }
 }
