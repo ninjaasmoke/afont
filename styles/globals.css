@@ -13,7 +13,7 @@ body {
 }
 
 .background {
-  --bg: #181828;
+  --bg: #181820;
   --color: #d3d3d3;
   background-color: var(--bg);
   color: var(--color);
