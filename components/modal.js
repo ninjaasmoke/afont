@@ -14,6 +14,9 @@ export default function Modal({ modalText, agreementFunction }) {
                     {modalText}
                 </div>
                 <div className={styles.buttons}>
+                    {/* <button className={styles.disagree} onClick={hideModal}>
+                        I don't understand.
+                    </button> */}
                     <button className={styles.button} onClick={hideModal}>
                         I understand.
                     </button>
