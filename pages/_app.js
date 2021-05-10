@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="keywords" content="Keywords" />
         <title>Assignmentium</title>
 
-        <link rel="manifest" href="/manifest.webmanifest" />
+        <link rel="manifest" href="/manifest.json" />
         <link
           href="/icons/favicon-16x16.png"
           rel="icon"
