@@ -10,7 +10,7 @@ const USER_COOKIE_CONSENT = 'USER_COOKIE_CONSENT'
 const USER_MOBILE_WARNING = 'USER_MOBILE_WARNING'
 
 const COOKIE_AGREEMENT_TEXT = 'This site uses cookies to enhance user experience.'
-const MODAL_TEXT = 'This app was built keeping a desktop in mind. Even though it is usable on a phone, I recommend using it on a PC.'
+const MODAL_TEXT = 'This app was designed keeping a desktop in mind. Even though it is completely responsive and usable on a phone, I recommend using it on a PC to get the complete experience.'
 
 export default function Home() {
 
