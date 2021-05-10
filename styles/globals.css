@@ -42,8 +42,8 @@ a {
 a:hover,
 a:focus,
 a:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 * {
