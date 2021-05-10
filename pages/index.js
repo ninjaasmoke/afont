@@ -1,12 +1,40 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import Modal from '../components/modal'
+import { useAppContext } from '../context/AppContext'
 import styles from '../styles/Home.module.css'
 
+const USER_COOKIE_CONSENT = 'USER_COOKIE_CONSENT'
+const USER_MOBILE_WARNING = 'USER_MOBILE_WARNING'
+
+const COOKIE_AGREEMENT_TEXT = 'This site uses cookies to enhance user experience.'
 const MODAL_TEXT = 'This app was built keeping a desktop in mind. Even though it is usable on a phone, I recommend using it on a PC.'
 
 export default function Home() {
+
+  const { getCookie, setCookie, showCookieModal, setShowCookieModal, showMobileWarning, setShowMobileWarning } = useAppContext()
+
+  const userCookieAgreement = () => {
+    setCookie(USER_COOKIE_CONSENT, true, 30)
+    setShowCookieModal(false)
+  }
+
+  const mobileWarning = () => {
+    setCookie(USER_MOBILE_WARNING, false, 1)
+    setShowMobileWarning(false)
+  }
+
+  useEffect(() => {
+    if (getCookie(USER_COOKIE_CONSENT)) {
+      setShowCookieModal(false)
+    }
+    if (window.innerWidth <= 600 && !getCookie(USER_MOBILE_WARNING)) {
+      setShowMobileWarning(true)
+    }
+  }, [])
+
   return (
     <>
       <div className={styles.container}>
@@ -86,7 +114,12 @@ export default function Home() {
         }
       `}</style>
       </div>
-      <Modal modalText={MODAL_TEXT} />
+      {showCookieModal &&
+        <Modal modalText={COOKIE_AGREEMENT_TEXT} agreementFunction={userCookieAgreement} />
+      }
+      {!showCookieModal && showMobileWarning &&
+        <Modal modalText={MODAL_TEXT} agreementFunction={mobileWarning} />
+      }
     </>
   )
 }

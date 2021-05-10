@@ -42,6 +42,7 @@
 }
 
 .button {
+    cursor: pointer;
     font-family: 'Raleway', sans-serif;
     color: white;
     border: none;
@@ -49,15 +50,27 @@
     border-radius: 100px;
     padding: 8px 12px;
     background-color: #0070f3;
+    transition-duration: 200ms;
+}
+
+.button:hover {
+    box-shadow: 0px 0px 1px 10px #0071f32d;
 }
 
 @keyframes showModal {
-    from {bottom: -10vh}
-    to {bottom: 0;}
+    from {bottom: -10vh; opacity: 0}
+    to {bottom: 0; opacity: 1;}
 }
 
 @media (min-width: 601px) {
     .modal {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .modalText {
+        text-align: center;
     }
 }

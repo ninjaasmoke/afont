@@ -1,9 +1,10 @@
 import styles from './modal.module.css'
 
-export default function Modal({ modalText }) {
+export default function Modal({ modalText, agreementFunction }) {
 
     const hideModal = () => {
         document.getElementById("modal").classList.add(styles.hideModal)
+        agreementFunction()
     }
 
     return (
