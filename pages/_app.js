@@ -14,14 +14,13 @@ function MyApp({ Component, pageProps }) {
     } else {
       setCookie(DARK_MODE_ON, 'true', 30)
     }
-    console.log(darkModeOn)
   }
 
   useEffect(() => {
     const darkModeOn = getCookie(DARK_MODE_ON)
     const toggle = document.querySelector('.toggle')
     const h = new Date().getHours()
-    toggle.checked = h > 7 && h < 18 && darkModeOn === 'true' // Light mode
+    toggle.checked = h > 7 && h < 18 && darkModeOn !== 'true' // Light mode
   }, [])
   return (
     <AppWrapper>
