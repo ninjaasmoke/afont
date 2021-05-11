@@ -18,11 +18,6 @@ export async function getStaticProps() {
 }
 
 export default function Step1({ fonts, fontsLink }) {
-
-    useEffect(() => {
-        fontsLink = "https://fonts.googleapis.com/css2?family=" + fonts.map(cV => cV.replace(/ /g, '+')).join('&family=') + "&display=swap";
-    }, [])
-
     return (
         <div className={styles.container}>
             <Head>
