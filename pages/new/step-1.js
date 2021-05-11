@@ -51,12 +51,14 @@ export default function Step1({ fonts }) {
 
             <ul className={utils.fonts}>
                 {fonts.map((font, index) => (
-                    <li key={index} className={utils.font}>
-                        <span className={utils.fontName}>{font}</span>
-                        <p className={utils.fontText} style={{ fontFamily: '"' + font + '"', }}>
-                            The quick brown fox jumps over the lazy fox.
-                        </p>
-                    </li>
+                    <Link key={index} href="/new/step-2">
+                        <a className={utils.font} >
+                            <span className={utils.fontName}>{font}</span>
+                            <p className={utils.fontText} style={{ fontFamily: '"' + font + '"', }}>
+                                The quick brown fox jumps over the lazy fox.
+                                </p>
+                        </a>
+                    </Link>
                 ))}
             </ul>
 

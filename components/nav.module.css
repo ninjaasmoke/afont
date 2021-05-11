@@ -11,12 +11,20 @@
     background-color: var(--bg);
 }
 
-.nav a {
+.nav a, .nav span {
     font-size: .9rem;
     width: 50px;
 }
 
-.nav a::after {
+.nav span {
+    cursor: pointer;
+}
+
+.nav span:hover {
+    color: var(--accent);
+}
+
+.nav a::after, .nav span::after {
     display: block;
     content: '';
     border-bottom: solid 1px var(--accent);
@@ -24,7 +32,7 @@
     transition: transform 250ms ease-in-out;
 }
 
-.nav a:hover::after {
+.nav a:hover::after, .nav span:hover::after {
     transform: scaleX(1);
 }
 
