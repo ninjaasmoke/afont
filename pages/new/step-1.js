@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import Nav from '../components/nav'
-import styles from '../styles/New.module.css'
+import Nav from '../../components/nav'
+import styles from '../../styles/New.module.css'
 
-export default function New() {
+export default function Step1() {
     return (
         <div className={styles.container}>
             <Head>
@@ -36,7 +36,7 @@ export default function New() {
             </div>
 
             <div className={styles.gotoLearn}>
-                If you are new and not sure how to use this app, please visit{' '} <Link href="/learn"><a>Learn</a></Link>
+                If you are not sure how to use this app, please visit{' '} <Link href="/learn"><a>Learn.</a></Link>
             </div>
         </div>
     )

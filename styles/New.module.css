@@ -20,7 +20,7 @@
     /* top: 50px; */
     width: 100%;
     border-bottom: 1px solid #7c7c7c2b;
-    padding: 0px 20px 12px ;
+    padding: 0px 20px 10px ;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -51,7 +51,7 @@
 .gotoLearn {
     position: fixed;
     bottom: 0px;
-    padding: 4px 0;
+    padding: 4px;
     border-top: 1px solid #7c7c7c2b;
     text-align: center;
     width: 100%;

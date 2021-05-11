@@ -7,12 +7,6 @@ import { useAppContext } from '../context/AppContext'
 import styles from '../styles/Home.module.css'
 import * as Strings from '../helper/strings'
 
-// const USER_COOKIE_CONSENT = 'USER_COOKIE_CONSENT'
-// const USER_MOBILE_WARNING = 'USER_MOBILE_WARNING'
-
-// const COOKIE_AGREEMENT_TEXT = 'This site uses cookies to enhance user experience.'
-// const MODAL_TEXT = 'This app was designed keeping a desktop in mind. Even though it is completely responsive and usable on a phone, I recommend ALWAYS using it on a PC to get the best experience.'
-
 export default function Home() {
 
   const { getCookie, setCookie, showCookieModal, setShowCookieModal, showMobileWarning, setShowMobileWarning } = useAppContext()
@@ -59,7 +53,7 @@ export default function Home() {
         </p>
 
           <div className={styles.grid}>
-            <Link href="/new">
+            <Link href="/new/step-1">
               <a className={styles.card}>
                 <h2>New Assignment &rarr;</h2>
                 <p>Create a new assignment or document.</p>
