@@ -20,8 +20,6 @@ export default function Step1({ fonts }) {
         <div className={styles.container}>
             <Head>
                 <title>Assignmentium | Create</title>
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Architects+Daughter&family=Beth+Ellen&family=Cedarville+Cursive&family=Cookie&family=Dawning+of+a+New+Day&family=Give+You+Glory&family=Gloria+Hallelujah&family=Homemade+Apple&family=Indie+Flower&family=League+Script&family=Mr+De+Haviland&family=Nothing+You+Could+Do&family=Sacramento&family=The+Girl+Next+Door&family=Zeyada&display=swap" rel="stylesheet" />
             </Head>
 
             <Nav linkTo="/" navTitle="Create" />
