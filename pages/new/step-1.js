@@ -1,28 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useEffect } from 'react'
 import Nav from '../../components/nav'
 import { getFontNames } from '../../lib/fonts'
 import styles from '../../styles/New.module.css'
 import utils from '../../styles/utils.module.css'
 
 export async function getStaticProps() {
-    const fonts = [
-        "Annie Use Your Telescope",
-        "Architects Daughter",
-        "Beth Ellen",
-        "Cedarville Cursive",
-        "Cookie",
-        "Dawning of a New Day",
-        "Give You Glory",
-        "Gloria Hallelujah",
-        "Homemade Apple",
-        "Indie Flower",
-        "League Script",
-        "Mr De Haviland",
-        "Nothing You Could Do",
-        "Sacramento",
-        "The Girl Next Door",
-        "Zeyada"];
+    const fonts = getFontNames();
     const fontsLink = "https://fonts.googleapis.com/css2?family=" + fonts.map(cV => cV.replace(/ /g, '+')).join('&family=') + "&display=swap"
     return {
         props: {
@@ -33,6 +18,11 @@ export async function getStaticProps() {
 }
 
 export default function Step1({ fonts, fontsLink }) {
+
+    useEffect(() => {
+        fontsLink = "https://fonts.googleapis.com/css2?family=" + fonts.map(cV => cV.replace(/ /g, '+')).join('&family=') + "&display=swap";
+    }, [])
+
     return (
         <div className={styles.container}>
             <Head>
