@@ -6,15 +6,10 @@ import styles from '../../styles/New.module.css'
 import utils from '../../styles/utils.module.css'
 
 export async function getStaticProps() {
-    const fonts = ["Montserrat", "Product Sans", "Girassol"]
-    const fontsLink =
-        "https://fonts.googleapis.com/css2?family=" +
-        fonts.map((cV) => cV.replace(/ /g, "+")).join("&family=") +
-        "&display=swap"
+    const fonts = getFontNames();
     return {
         props: {
             fonts,
-            fontsLink,
         },
     }
 }
