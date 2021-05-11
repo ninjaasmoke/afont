@@ -36,14 +36,23 @@
     cursor: pointer;
 }
 
+.h1 {
+    margin-top: 100px; /* update according to instructions height */
+    width: 100%;
+    padding: 0 30px;
+}
+
+.h1 h1 {
+    margin: 8px 0 4px;
+}
+
 .fonts {
-    margin-top: 94px; /* update according to instructions height */
     width: 100%;
     list-style: none;
     display: grid;
     grid-template-columns: auto auto auto;
     grid-gap: 10px;
-    padding: 20px 30px;
+    padding: 0px 30px 20px;
 }
 
 .font {
@@ -55,6 +64,12 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    min-height: 100px;
+}
+
+.font:hover {
+    background-color: var(--hoverColor);
+    box-shadow: 0px 0px 4px 1px #20202023;
 }
 
 .fontName {
@@ -64,9 +79,8 @@
     /* font-weight: 900; */
 }
 
-.font:hover {
-    background-color: var(--hoverColor);
-    box-shadow: 0px 0px 4px 1px #20202023;
+.fontText {
+    font-size: 32px;
 }
 
 .gotoLearn {
@@ -84,6 +98,12 @@
     color: var(--accent);
 }
 
+@media (max-width: 900px) and (min-width: 601px) {
+    .fonts {
+        grid-template-columns: auto auto;
+    }
+}
+
 @media (max-width: 600px) {
     .step .stepInstr {
         display: none;
@@ -91,5 +111,9 @@
 
     .step h2 {
         font-size: 16px;
+    }
+    
+    .fonts {
+        grid-template-columns: auto;
     }
 }

@@ -7,18 +7,21 @@ import utils from '../../styles/utils.module.css'
 
 export async function getStaticProps() {
     const fonts = getFontNames();
+    const fontsLink = "https://fonts.googleapis.com/css2?family=" + fonts.map(cV => cV.replace(/ /g, '+')).join('&family=') + "&display=swap"
     return {
         props: {
-            fonts
+            fonts,
+            fontsLink
         }
     }
 }
 
-export default function Step1({ fonts }) {
+export default function Step1({ fonts, fontsLink }) {
     return (
         <div className={styles.container}>
             <Head>
                 <title>Assignmentium | Create</title>
+                <link href={fontsLink} rel="stylesheet" />
             </Head>
 
             <Nav linkTo="/" navTitle="Create" />
@@ -46,10 +49,15 @@ export default function Step1({ fonts }) {
                 </div>
             </div>
 
+            <div className={utils.h1}><h1 >Pick a font.</h1></div>
+
             <ul className={utils.fonts}>
                 {fonts.map((font, index) => (
                     <li key={index} className={utils.font}>
                         <span className={utils.fontName}>{font}</span>
+                        <p className={utils.fontText} style={{ fontFamily: '"' + font + '"', }}>
+                            The quick brown fox jumps over the lazy fox.
+                        </p>
                     </li>
                 ))}
             </ul>
