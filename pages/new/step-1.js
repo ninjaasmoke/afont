@@ -21,6 +21,7 @@ export default function Step1({ fonts, fontsLink }) {
         <div className={styles.container}>
             <Head>
                 <title>Assignmentium | Create</title>
+                <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <link href={fontsLink} rel="stylesheet" />
             </Head>
 
