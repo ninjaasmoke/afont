@@ -1,26 +1,36 @@
 import Head from 'next/head'
 import { useRouter } from "next/router"
+import { useEffect } from 'react'
 import InstrStep from '../../components/instrstep'
 import Nav from '../../components/nav'
+import { getFontNames } from '../../lib/fonts'
 import styles from '../../styles/New.module.css'
 import utils from '../../styles/utils.module.css'
+import FourOhFour from '../404'
 
 export default function Step2() {
-    const router = useRouter()
+    const router = useRouter();
     const {
         query: { specimen },
-    } = router
+    } = router;
+    const fontExists = getFontNames().includes(specimen)
     return (
-        <div className={styles.container}>
-            <Head>
-                <title>Assignmentium | Create</title>
-            </Head>
+        <>
+            {
+                fontExists
+                    ? <div className={styles.container}>
+                        <Head>
+                            <title>Assignmentium | Create</title>
+                        </Head>
 
-            <Nav navTitle="Create" />
+                        <Nav navTitle="Create" />
 
-            <InstrStep steps={2} />
+                        <InstrStep steps={2} />
 
-            {specimen}
-        </div>
+                        <div className={utils.h1}><h1 >Edit your font. {specimen}</h1></div>
+                    </div>
+                    : <FourOhFour backUrl="/new/step-1" />
+            }
+        </>
     )
 }
