@@ -5,7 +5,7 @@ import { getFontNames } from '../../lib/fonts'
 import styles from '../../styles/New.module.css'
 import utils from '../../styles/utils.module.css'
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const fonts = getFontNames();
     const fontsLink = "https://fonts.googleapis.com/css2?family=" + fonts.map(cV => cV.replace(/ /g, '+')).join('&family=') + "&display=swap"
     return {

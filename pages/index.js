@@ -53,12 +53,12 @@ export default function Home() {
         </p>
 
           <div className={styles.grid}>
-            <Link href="/new/step-1">
-              <a className={styles.card}>
-                <h2>New Assignment &rarr;</h2>
-                <p>Create a new assignment or document.</p>
-              </a>
-            </Link>
+            {/* <Link> */}
+            <a href="/new/step-1" className={styles.card}>
+              <h2>New Assignment &rarr;</h2>
+              <p>Create a new assignment or document.</p>
+            </a>
+            {/* </Link> */}
 
             <Link href="/learn">
               <a className={styles.card}>
