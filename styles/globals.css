@@ -24,7 +24,7 @@ body {
 }
 
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 5px;
 }
 
@@ -35,7 +35,7 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #181818;
   border-radius: 40px;
-}
+} */
 
 a {
   color: inherit;

@@ -1,34 +1,26 @@
+import Head from 'next/head'
+import { useRouter } from "next/router"
+import InstrStep from '../../components/instrstep'
 import Nav from '../../components/nav'
 import styles from '../../styles/New.module.css'
 import utils from '../../styles/utils.module.css'
 
 export default function Step2() {
+    const router = useRouter()
+    const {
+        query: { specimen },
+    } = router
     return (
         <div className={styles.container}>
+            <Head>
+                <title>Assignmentium | Create</title>
+            </Head>
+
             <Nav navTitle="Create" />
 
-            <div className={utils.instructions}>
+            <InstrStep steps={2} />
 
-                <div className={utils.step + ' ' + utils.active}>
-                    <h2>Step 1</h2>
-                    <p className={utils.stepInstr}>Pick a font.</p>
-                </div>
-
-                <div className={utils.step + ' ' + utils.active}>
-                    <h2>Step 2</h2>
-                    <p className={utils.stepInstr}>Edit your font.</p>
-                </div>
-
-                <div className={utils.step}>
-                    <h2>Step 3</h2>
-                    <p className={utils.stepInstr}>Copy the text required, and paste.</p>
-                </div>
-
-                <div className={utils.step}>
-                    <h2>Step 4</h2>
-                    <p className={utils.stepInstr}>Download.</p>
-                </div>
-            </div>
+            {specimen}
         </div>
     )
 }

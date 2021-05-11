@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import InstrStep from '../../components/instrstep'
 import Nav from '../../components/nav'
 import { getFontNames } from '../../lib/fonts'
 import styles from '../../styles/New.module.css'
@@ -24,34 +25,16 @@ export default function Step1({ fonts }) {
 
             <Nav linkTo="/" navTitle="Create" />
 
-            <div className={utils.instructions}>
-
-                <div className={utils.step + ' ' + utils.active}>
-                    <h2>Step 1</h2>
-                    <p className={utils.stepInstr}>Pick a font.</p>
-                </div>
-
-                <div className={utils.step}>
-                    <h2>Step 2</h2>
-                    <p className={utils.stepInstr}>Edit your font.</p>
-                </div>
-
-                <div className={utils.step}>
-                    <h2>Step 3</h2>
-                    <p className={utils.stepInstr}>Copy the text required, and paste.</p>
-                </div>
-
-                <div className={utils.step}>
-                    <h2>Step 4</h2>
-                    <p className={utils.stepInstr}>Download.</p>
-                </div>
-            </div>
+            <InstrStep steps={1} />
 
             <div className={utils.h1}><h1 >Pick a font.</h1></div>
 
             <ul className={utils.fonts}>
                 {fonts.map((font, index) => (
-                    <Link key={index} href="/new/step-2">
+                    <Link key={index} href={{
+                        pathname: "/new/step-2",
+                        query: { specimen: font }
+                    }}>
                         <a className={utils.font} >
                             <span className={utils.fontName}>{font}</span>
                             <p className={utils.fontText} style={{ fontFamily: '"' + font + '"', }}>
