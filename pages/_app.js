@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
     const darkModeOn = getCookie(DARK_MODE_ON)
     const toggle = document.querySelector('.toggle')
     const h = new Date().getHours()
-    toggle.checked = h > 7 && h < 19 && darkModeOn !== 'true' // Light mode
+    toggle.checked = (h > 7 && h < 19) || darkModeOn !== 'true' // Light mode
   }, [])
   return (
     <AppWrapper>
