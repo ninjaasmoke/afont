@@ -26,9 +26,7 @@ export default function FourOhFour({ backUrl }) {
                 {
                     !backUrl
                         ? <Link href="/">
-                            <a>
-                                &larr; Go back home
-                        </a>
+                            <a>&larr; Go back home</a>
                         </Link>
                         : <span onClick={() => router.back()} className={styles.goBack}>&larr; Go back</span>
                 }

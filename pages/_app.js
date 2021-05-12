@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { AppWrapper } from '../context/AppContext'
 import '../styles/globals.css'
@@ -16,11 +16,15 @@ function MyApp({ Component, pageProps }) {
     }
   }
 
+  const [darkTheme, setDarkTheme] = useState(true)
+
   useEffect(() => {
     const darkModeOn = getCookie(DARK_MODE_ON)
     const toggle = document.querySelector('.toggle')
     const h = new Date().getHours()
-    toggle.checked = (h > 7 && h < 19) || (darkModeOn && darkModeOn !== 'true') // Light mode
+    const bool = !darkModeOn ? (h > 7 && h < 19) : (darkModeOn != 'true')
+    setDarkTheme(bool)
+    toggle.checked = bool // Light mode
   }, [])
   return (
     <AppWrapper>
@@ -49,7 +53,7 @@ function MyApp({ Component, pageProps }) {
           sizes="32x32"
         />
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
-        <meta name="theme-color" content="#181818" />
+        <meta name="theme-color" content={darkTheme ? "#18181d" : "#fff"} />
       </Head>
       <input id="toggle" className="toggle" type="checkbox" title="Toggle Dark Mode" onClick={toggleDarkMode} />
       <div className="background">
