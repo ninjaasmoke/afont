@@ -45,6 +45,7 @@ export default function Step2() {
                                         <li key={index}
                                             onClick={() => setSelectedImg(imgsrc)}
                                             style={{ border: selectedImg == imgsrc ? '4px solid #6cc644' : '' }}
+                                            title="Click to select"
                                         >
                                             <span className={stepStyle.tooltiptext}>{toolTips[index]}</span>
                                             <Image
