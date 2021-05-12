@@ -19,7 +19,7 @@ export default function InstrStep({ steps }) {
 
             <div className={getClass(2)}>
                 <h2>Step 2</h2>
-                <p className={utils.stepInstr}>Edit your font.</p>
+                <p className={utils.stepInstr}>Select background.</p>
             </div>
 
             <div className={getClass(3)}>

@@ -1,11 +1,12 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import { useRouter } from "next/router"
-import { useEffect } from 'react'
+import { useState } from 'react'
 import InstrStep from '../../components/instrstep'
 import Nav from '../../components/nav'
 import { getFontNames } from '../../lib/fonts'
-import styles from '../../styles/New.module.css'
 import utils from '../../styles/utils.module.css'
+import stepStyle from '../../styles/step-2.module.css'
 import FourOhFour from '../404'
 
 export default function Step2() {
@@ -14,22 +15,51 @@ export default function Step2() {
         query: { specimen },
     } = router;
     const fontExists = getFontNames().includes(specimen)
+
+    const bgImages = ['/images/l/l-0.jpeg', '/images/ml/ml-0.jpeg', '/images/mnl/mnl-0.jpeg', '/images/nl/nl-0.jpeg'];
+    const toolTips = ['Only Lines', 'Margin & Line', 'Only Margin', 'No Lines']
+
+    const [selectedImg, setSelectedImg] = useState(bgImages[0])
     return (
         <>
             {
-                fontExists
-                    ? <div className={styles.container}>
+                !fontExists
+                    ? <FourOhFour backUrl="/new/step-1" />
+                    : <div className={utils.container}>
                         <Head>
                             <title>Assignmentium | Create</title>
+                            <link rel="preconnect" href="https://fonts.gstatic.com" />
+                            <link href={"https://fonts.googleapis.com/css2?family=" + specimen + "&display=swap"} rel="stylesheet" />
                         </Head>
 
                         <Nav navTitle="Create" />
 
                         <InstrStep steps={2} />
 
-                        <div className={utils.h1}><h1 >Edit your font.</h1> <span style={{ fontFamily: specimen }}>⚡{' '}{specimen}</span> </div>
+                        <div className={utils.h1}><h1 >Select your background style.</h1> <span style={{ fontFamily: specimen }}>{specimen}{' '}⚡</span> </div>
+
+                        <div className={stepStyle.pickBG}>
+                            <ul>
+                                {
+                                    bgImages.map((imgsrc, index) => (
+                                        <li key={index}
+                                            onClick={() => setSelectedImg(imgsrc)}
+                                            style={{ border: selectedImg == imgsrc ? '4px solid #6cc644' : '' }}
+                                        >
+                                            <span className={stepStyle.tooltiptext}>{toolTips[index]}</span>
+                                            <Image
+                                                src={imgsrc}
+                                                layout="fill"
+                                            />
+                                            <span className={stepStyle.checked}
+                                                style={{ display: selectedImg == imgsrc ? '' : 'none' }}
+                                            >Selected</span>
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                        </div>
                     </div>
-                    : <FourOhFour backUrl="/new/step-1" />
             }
         </>
     )

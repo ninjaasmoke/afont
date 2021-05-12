@@ -1,0 +1,78 @@
+.pickBG {
+    width: 100%;
+    padding: 20px 32px 0;
+}
+
+.pickBG ul {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 4px;
+    padding: 2rem 5rem;
+    list-style: none;
+    height: 100%;
+}
+
+.pickBG ul li {
+    cursor: pointer;
+    /* box-shadow: 0px 0px 6px 1px #18181831; */
+    position: relative;
+    display: inline-block;
+    height: min-content;
+    transition-duration: 200ms;
+    border: 4px solid var(--color);
+    width: 100%;
+    height: calc(100vw / 5 * 1.414);
+}
+
+.pickBG ul li .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color:black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 102%;
+    left: 50%;
+    margin-left: 10px;
+}
+
+.pickBG ul li:hover .tooltiptext {
+    visibility: visible;
+}
+
+.pickBG ul li .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.checked {
+    width: 120px;
+    background-color: #6cc644;
+    color: #fff;
+    text-align: center;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 8px 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -50%;
+}

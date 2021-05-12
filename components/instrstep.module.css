@@ -1,7 +1,7 @@
 
 .instructions {
     position: fixed;
-    z-index: 1;
+    z-index: 5;
     top: 48px;
     background-color: var(--bg);
     width: 100%;
@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    cursor: pointer;
+    cursor: not-allowed;
 }
 
 .step h2 {
@@ -51,6 +51,7 @@
 
 .step.done {
     color: #6cc644;
+    cursor: pointer;
 }
 
 @media (max-width: 600px) {
