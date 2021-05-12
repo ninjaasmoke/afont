@@ -27,7 +27,7 @@ export default function Step2() {
 
                         <InstrStep steps={2} />
 
-                        <div className={utils.h1}><h1 >Edit your font.</h1> <span style={{ fontFamily: specimen }}>⚡{specimen}</span> </div>
+                        <div className={utils.h1}><h1 >Edit your font.</h1> <span style={{ fontFamily: specimen }}>⚡{' '}{specimen}</span> </div>
                     </div>
                     : <FourOhFour backUrl="/new/step-1" />
             }

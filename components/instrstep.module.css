@@ -50,7 +50,7 @@
 }
 
 .step.done {
-    color: rgb(5, 177, 5);
+    color: #6cc644;
 }
 
 @media (max-width: 600px) {

@@ -34,7 +34,7 @@
 
 .font:hover {
     background-color: var(--hoverColor);
-    box-shadow: 0px 1px 6px 2px #20202023;
+    box-shadow: 0px 1px 8px 1px #20202023;
     color: var(--color);
     border: 1px solid #7c7c7c35;
 }
