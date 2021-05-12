@@ -53,7 +53,7 @@ function MyApp({ Component, pageProps }) {
           sizes="32x32"
         />
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
-        <meta name="theme-color" content={darkTheme ? "#18181d" : "#fff"} />
+        <meta name="theme-color" content={!darkTheme ? "#18181d" : "#fff"} />
       </Head>
       <input id="toggle" className="toggle" type="checkbox" title="Toggle Dark Mode" onClick={toggleDarkMode} />
       <div className="background">
