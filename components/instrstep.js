@@ -4,6 +4,7 @@ export default function InstrStep({ steps }) {
 
     const getClass = (step) => {
         let c = steps - step
+        if (c == 1) return utils.step + ' ' + utils.prev
         if (c > 0) return utils.step + ' ' + utils.done
         if (c == 0) return utils.step + ' ' + utils.active
         return utils.step
