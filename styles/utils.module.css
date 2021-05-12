@@ -8,6 +8,10 @@
     margin: 8px 0 4px;
 }
 
+.h1 span {
+    font-size: larger;
+}
+
 .fonts {
     width: 100%;
     list-style: none;
