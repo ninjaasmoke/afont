@@ -61,8 +61,9 @@ export default function Step3() {
             <Head>
                 <title>Assignmentium | Create</title>
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link href={"https://fonts.googleapis.com/css2?family=" + specimen + "&display=swap"} rel="stylesheet" />
             </Head>
+
+            <link href={"https://fonts.googleapis.com/css2?family=" + specimen + "&display=swap"} rel="stylesheet" />
 
             <Nav navTitle="Create" />
 
