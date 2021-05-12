@@ -14,6 +14,9 @@
     margin-top: 100px; /* update according to instructions height */
     width: 100%;
     padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .h1 h1 {
@@ -22,6 +25,33 @@
 
 .h1 span {
     font-size: larger;
+}
+
+.h1Buttons a {
+    background-color: var(--accent);
+    border-radius: 100px;
+    outline: none;
+    border: none;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    padding: 8px 16px;
+    font-size: 14px;
+    transition-duration: 200ms;
+}
+
+.h1Buttons a:hover {
+    box-shadow: 0px 0px 1px 10px #0071f32d;
+}
+
+.nextButton {
+    background-color: var(--accent);
+    border-radius: 100px;
+    outline: none;
+    border: none;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    padding: 12px 20px;
+    font-size: 18px;
 }
 
 .fonts {

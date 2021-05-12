@@ -8,6 +8,7 @@ import { getFontNames } from '../../lib/fonts'
 import utils from '../../styles/utils.module.css'
 import stepStyle from '../../styles/step-2.module.css'
 import FourOhFour from '../404'
+import Link from 'next/link'
 
 export default function Step2() {
     const router = useRouter();
@@ -36,7 +37,22 @@ export default function Step2() {
 
                         <InstrStep steps={2} />
 
-                        <div className={utils.h1}><h1 >Select your background style.</h1> <span style={{ fontFamily: specimen }}>{specimen}{' '}⚡</span> </div>
+                        <div className={utils.h1}>
+                            <div>
+                                <h1 >Select your background style.</h1> <span style={{ fontFamily: specimen }}>{specimen}{' '}⚡</span>
+                            </div>
+                            <div className={utils.h1Buttons}>
+                                <Link href={{
+                                    pathname: "/new/step-3",
+                                    query: {
+                                        specimen: specimen,
+                                        bgImg: selectedImg
+                                    }
+                                }}>
+                                    Next &rarr;
+                                </Link>
+                            </div>
+                        </div>
 
                         <div className={stepStyle.pickBG}>
                             <ul>
