@@ -65,6 +65,7 @@ export default function Step2() {
                                         >
                                             <span className={stepStyle.tooltiptext}>{toolTips[index]}</span>
                                             <Image
+                                                priority
                                                 src={imgsrc}
                                                 layout="fill"
                                             />
