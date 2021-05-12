@@ -52,7 +52,9 @@
 
     .container {
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-evenly;
+        padding: 0px;
+        padding-top: 80px;
     }
 
     .h1 {
@@ -65,11 +67,17 @@
 
     .desWrapper {
         text-align: center;
+        height: 50vh;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .des {
         font-size: 18px;
         text-align: center;
-        margin: 28px 0 32px;
+        margin: 28px 0;
     }
 }
