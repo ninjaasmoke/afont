@@ -50,8 +50,13 @@
     border: none;
     color: white;
     font-family: 'Raleway', sans-serif;
-    padding: 12px 20px;
-    font-size: 18px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.nextButton:hover {
+    box-shadow: 0px 0px 1px 10px #0071f32d;
 }
 
 .fonts {

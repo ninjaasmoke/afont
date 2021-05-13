@@ -9,9 +9,9 @@ import { getFontNames } from '../../lib/fonts'
 import { useAppContext } from '../../context/AppContext'
 import { bgImages } from '../../helper/bgImages'
 
-const getElement = (id = 'pages') => document.getElementById(id)
+const getElement = (id = '.pageInpt') => document.querySelectorAll(id)
 
-const updateFontElem = (attr, val) => getElement().style[attr] = val.toString()
+const updateFontElem = (attr, val) => getElement().forEach(c => c.style[attr] = val.toString())
 
 export default function Step3() {
 
@@ -32,6 +32,21 @@ export default function Step3() {
     const [wSpace, setWSpace] = useState(fontState.wordSpacing)
     const [lHeight, setLHeight] = useState(fontState.lineHeight)
     const [fColor, setFColor] = useState(fontState.fColor)
+
+    const [pageId, setPageId] = useState([1])
+    const newP = <Page
+        bgImgs={bgImgs}
+        specimen={specimen}
+        pageID={pageId[pageId.length - 1]}
+        color={fColor}
+        fontSize={fontSize}
+        tPadding={tPadding}
+        lPadding={lPadding}
+        lSpace={lSpace}
+        wSpace={wSpace}
+        lHeight={lHeight} />;
+    const [pages, setPages] = useState([newP])
+
 
     const handleFont = (e) => {
         setFontSize(e.target.value)
@@ -133,16 +148,18 @@ export default function Step3() {
                     <h4>Selected background.</h4>
 
                     <div className={stepStyle.imgWrapper}>
-                        <Page
-                            bgImgs={bgImgs}
-                            getRandBg={getRandBg}
-                            specimen={specimen}
-                            fontSize={fontSize}
-                            tPadding={tPadding}
-                            lPadding={lPadding}
-                            lSpace={lSpace}
-                            wSpace={wSpace}
-                            lHeight={lHeight} />
+                        {
+                            pages.map((page, index) => (
+                                <div key={index}>
+                                    {page}
+                                </div>
+                            ))
+                        }
+
+                        <button
+                            className={utils.nextButton} style={{ marginTop: 20 }}
+                            onClick={() => { setPages([...pages, newP]); setPageId([...pageId, pageId[pageId.length - 1] + 1]) }}
+                        >Add page</button>
                     </div>
                 </div>
             </div>
@@ -152,14 +169,15 @@ export default function Step3() {
 
 const Page = ({
     bgImgs,
-    getRandBg,
     specimen,
+    fColor,
     fontSize,
     tPadding,
     lPadding,
     lSpace,
     wSpace,
     lHeight,
+    pageID,
     defText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!"
 }) => {
     return (
@@ -169,23 +187,22 @@ const Page = ({
                 height={700}
                 width={495}
             />
-            <div
-                className={stepStyle.imgText}
-                id="pages"
-                style={{
-                    fontFamily: specimen,
-                    padding: 8,
-                    fontSize: fontSize + 'px',
-                    paddingTop: tPadding + 'px',
-                    paddingLeft: lPadding + 'px',
-                    lineHeight: lHeight + 'px',
-                    letterSpacing: lSpace + 'px',
-                    wordSpacing: wSpace + 'px',
-                    overflow: 'hidden'
-                }}
-            >
-                <textarea type="text" name="page" className={stepStyle.pageInp} autoCorrect="false" spellCheck="false"
-                    defaultValue={defText} />
+            <div className={stepStyle.imgText}>
+                <textarea type="text" name={pageID} id={pageID} className={stepStyle.pageInp + " pageInpt"} autoCorrect="false" spellCheck="false"
+                    defaultValue={defText}
+                    style={{
+                        fontFamily: specimen,
+                        padding: 8,
+                        color: fColor,
+                        fontSize: fontSize + 'px',
+                        paddingTop: tPadding + 'px',
+                        paddingLeft: lPadding + 'px',
+                        lineHeight: lHeight + 'px',
+                        letterSpacing: lSpace + 'px',
+                        wordSpacing: wSpace + 'px',
+                        overflow: 'hidden'
+                    }}
+                />
             </div>
         </div>
     )
