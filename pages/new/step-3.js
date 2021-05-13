@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import Nav from '../../components/nav'
 import InstrStep from '../../components/instrstep'
 import utils from '../../styles/utils.module.css'
@@ -8,6 +9,7 @@ import { useRouter } from 'next/router'
 import { getFontNames } from '../../lib/fonts'
 import { useAppContext } from '../../context/AppContext'
 import { bgImages } from '../../helper/bgImages'
+import FourOhFour from '../404'
 
 const getElement = (id = '.pageInpt') => document.querySelectorAll(id)
 
@@ -15,7 +17,7 @@ const updateFontElem = (attr, val) => getElement().forEach(c => c.style[attr] = 
 
 export default function Step3() {
 
-    const { selBgImgType, fontState, setFontState } = useAppContext()
+    const { selBgImgType, fontState, setFontState, setAllPages, allPages } = useAppContext()
 
     const bgImgs = bgImages.filter(c => c.name == selBgImgType)[0]
 
@@ -34,11 +36,11 @@ export default function Step3() {
     const [fColor, setFColor] = useState(fontState.fColor)
     const [fWeight, setFWeight] = useState(fontState.fontWeight)
 
-    const [pageId, setPageId] = useState([1])
-    const newP = <Page
+    const [pageId, setPageId] = useState([0])
+    const newP = (num = 0) => <Page
         bgImgs={bgImgs}
         specimen={specimen}
-        pageID={pageId[pageId.length - 1]}
+        pageID={num}
         color={fColor}
         fontSize={fontSize}
         tPadding={tPadding}
@@ -48,7 +50,7 @@ export default function Step3() {
         lHeight={lHeight}
         fWeight={fWeight}
     />;
-    const [pages, setPages] = useState([newP])
+    const [pages, setPages] = useState([newP()])
 
 
     const handleFont = (e) => {
@@ -101,93 +103,133 @@ export default function Step3() {
 
     const getRandBg = Math.floor(Math.random() * bgImgs.src.length)
 
-    const addNewPage = () => { setPages([...pages, newP]); setPageId([...pageId, pageId[pageId.length - 1] + 1]) }
+    const addNewPage = () => {
+        let id = pageId[pageId.length - 1]
+        setPageId([...pageId, id + 1]);
+        console.log(pageId)
+        setPages([...pages, newP(id + 1)]);
+    }
 
     const delPage = (index) => {
         if (confirm('Are you sure you want to delete this page?')) {
-            setPageId(pageId.splice(index, 1))
-            setPages(pages.splice(index, 1))
+            const ids = pageId.splice(index, 1)
+            const pagesLi = pages.splice(index, 1)
+            setPageId([...ids])
+            setPages([...pagesLi])
+        }
+    }
+
+    const popPage = () => {
+        if (confirm('Are you sure you want to delete the last page?')) {
+            pageId.pop()
+            pages.pop()
+            setPageId([...pageId])
+            setPages([...pages])
         }
     }
 
     return (
-        <div className={utils.container}>
-            <Head>
-                <title>Assignmentium | Create</title>
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
-            </Head>
+        <>
+            {
+                !fontExists
+                    ? <FourOhFour />
+                    : <div className={utils.container}>
+                        <Head>
+                            <title>Assignmentium | Create</title>
+                            <link rel="preconnect" href="https://fonts.gstatic.com" />
+                        </Head>
 
-            <link href={"https://fonts.googleapis.com/css2?family=" + specimen + "&display=swap"} rel="stylesheet" />
+                        <link href={"https://fonts.googleapis.com/css2?family=" + specimen + "&display=swap"} rel="stylesheet" />
 
-            <Nav navTitle="Create" />
+                        <Nav navTitle="Create" />
 
-            <InstrStep steps={3} />
+                        <InstrStep steps={3} />
 
-            <div className={utils.h1}>
-                <div><h1>Add the text.</h1> <span style={{ fontFamily: specimen }} title="Selected font" >{specimen}{' '}⚡</span> </div>
-            </div>
+                        <div className={utils.h1}>
+                            <div><h1>Add the text.</h1> <span style={{ fontFamily: specimen }} title="Selected font" >{specimen}{' '}⚡</span> </div>
+                            <div className={utils.h1Buttons}>
+                                <Link href={{
+                                    pathname: "/new/step-4",
+                                    query: {
+                                        specimen: specimen
+                                    }
+                                }}>
+                                    <a onClick={() => {
+                                        setAllPages([...pages])
+                                    }}>Download &rarr;</a>
+                                </Link>
+                            </div>
+                        </div>
 
 
-            <div className={stepStyle.editWrapper}>
+                        <div className={stepStyle.editWrapper}>
 
-                <div className={stepStyle.editFontWrapper}>
-                    <h4>Font options.</h4>
-                    <div className={stepStyle.fontOptions}>
-                        <label htmlFor="fontSize">Font Size: {fontSize}</label>
-                        <input type="range" min="10" max="30" value={fontSize} onChange={e => handleFont(e)} class="slider" id="fontSize" name="fontSize" />
+                            <div className={stepStyle.editFontWrapper}>
+                                <h4>Font options.</h4>
+                                <div className={stepStyle.fontOptions}>
+                                    <label htmlFor="fontSize">Font Size: {fontSize}</label>
+                                    <input type="range" min="10" max="30" value={fontSize} onChange={e => handleFont(e)} className="slider" id="fontSize" name="fontSize" />
 
-                        <label htmlFor="tPadding">Top Padding: {tPadding}</label>
-                        <input type="range" min="0" max="80" step="2" value={tPadding} onChange={e => handleTPadding(e)} class="slider" id="tPadding" name="tPadding" />
+                                    <label htmlFor="tPadding">Top Padding: {tPadding}</label>
+                                    <input type="range" min="0" max="80" step="2" value={tPadding} onChange={e => handleTPadding(e)} className="slider" id="tPadding" name="tPadding" />
 
-                        <label htmlFor="lPadding">Left Padding: {lPadding}</label>
-                        <input type="range" min="0" max="80" step="2" value={lPadding} onChange={e => handleLPadding(e)} class="slider" id="lPadding" name="lPadding" />
+                                    <label htmlFor="lPadding">Left Padding: {lPadding}</label>
+                                    <input type="range" min="0" max="80" step="2" value={lPadding} onChange={e => handleLPadding(e)} className="slider" id="lPadding" name="lPadding" />
 
-                        <label htmlFor="lSpace">Letter Spacing: {lSpace}</label>
-                        <input type="range" min="0" max="8" value={lSpace} onChange={e => handleLSpace(e)} class="slider" id="lSpace" name="lSpace" />
+                                    <label htmlFor="lSpace">Letter Spacing: {lSpace}</label>
+                                    <input type="range" min="0" max="8" value={lSpace} onChange={e => handleLSpace(e)} className="slider" id="lSpace" name="lSpace" />
 
-                        <label htmlFor="wSpace">Word Spacing: {wSpace}</label>
-                        <input type="range" min="0" max="8" value={wSpace} onChange={e => handleWSpace(e)} class="slider" id="wSpace" name="wSpace" />
+                                    <label htmlFor="wSpace">Word Spacing: {wSpace}</label>
+                                    <input type="range" min="0" max="8" value={wSpace} onChange={e => handleWSpace(e)} className="slider" id="wSpace" name="wSpace" />
 
-                        <label htmlFor="lHeight">Line Height: {lHeight} <span className={stepStyle.caution}>Use with caution.</span> </label>
-                        <input type="range" min="12" max="30" step="1" value={lHeight} onChange={e => handleLHeight(e)} class="slider" id="lHeight" name="lHeight" />
+                                    <label htmlFor="lHeight">Line Height: {lHeight} <span className={stepStyle.caution}>Use with caution.</span> </label>
+                                    <input type="range" min="12" max="30" step="1" value={lHeight} onChange={e => handleLHeight(e)} className="slider" id="lHeight" name="lHeight" />
 
-                        {/* <label htmlFor="fWeight">Font Weight: {fWeight}</label>
-                        <input type="range" min="400" max="700" step="100" value={fWeight} onChange={e => handleFWeight(e)} class="slider" id="lHeight" name="lHeight" /> */}
+                                    {/* <label htmlFor="fWeight">Font Weight: {fWeight}</label>
+                            <input type="range" min="400" max="700" step="100" value={fWeight} onChange={e => handleFWeight(e)} className="slider" id="lHeight" name="lHeight" /> */}
 
-                        <label htmlFor="fColor">Font Color: {fColor}</label>
-                        <div className={stepStyle.swatch}>
-                            <input type="color" id="fColor" name="fColor" value={fColor} onChange={e => handleFColor(e)} />
-                            {/* <div class="info">
-                                <h1>Input</h1>
-                                <h2>Color</h2>
-                            </div> */}
+                                    <label htmlFor="fColor">Font Color: {fColor}</label>
+                                    <div className={stepStyle.swatch}>
+                                        <input type="color" id="fColor" name="fColor" value={fColor} onChange={e => handleFColor(e)} />
+                                        {/* <div className="info">
+                                    <h1>Input</h1>
+                                    <h2>Color</h2>
+                                </div> */}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className={stepStyle.currImg}>
+                                <h4>Selected background.</h4>
+
+                                <div className={stepStyle.imgWrapper}>
+                                    {
+                                        pages.map((page, index) => (
+                                            <div key={index} className={stepStyle.pageLeaf}>
+                                                {page}
+                                                {/* <span className={stepStyle.deleteImg}>
+                                            <img src='/images/del_red.svg' onClick={() => delPage(index)} title="Delete this page" />
+                                        </span> */}
+                                            </div>
+                                        ))
+                                    }
+
+                                    <div className={utils.pageButtons}>
+                                        {pages.length !== 1 && <button
+                                            className={utils.redButton} style={{ marginTop: 20 }}
+                                            onClick={() => popPage()}
+                                        >Remove page</button>}
+                                        <button
+                                            className={utils.nextButton} style={{ marginTop: 20 }}
+                                            onClick={() => addNewPage()}
+                                        >Add page</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div className={stepStyle.currImg}>
-                    <h4>Selected background.</h4>
-
-                    <div className={stepStyle.imgWrapper}>
-                        {
-                            pages.map((page, index) => (
-                                <div key={index} className={stepStyle.pageLeaf}>
-                                    {page}
-                                    <span className={stepStyle.deleteImg}>
-                                        <img src='/images/del_red.svg' onClick={() => delPage(index)} title="Delete this page" />
-                                    </span>
-                                </div>
-                            ))
-                        }
-
-                        <button
-                            className={utils.nextButton} style={{ marginTop: 20 }}
-                            onClick={() => addNewPage()}
-                        >Add page</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+            }
+        </>
     )
 }
 
@@ -206,15 +248,15 @@ const Page = ({
     // defText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!"
 }) => {
     return (
-        <div>
+        <div id={pageID}  >
             <img
                 src={bgImgs.src[0]}
             />
             <div className={stepStyle.imgText}>
                 <textarea
                     type="text" name={pageID}
-                    id={pageID} className={stepStyle.pageInp + " pageInpt"} autoCorrect="false" spellCheck="false"
-                    defaultValue={pageID == 1 ? 'Type here! Lorem Ipsum...' : ''}
+                    className={stepStyle.pageInp + " pageInpt"} autoCorrect="false" spellCheck="false"
+                    defaultValue={pageID == 0 ? 'Type here! Lorem Ipsum...' : ''}
                     style={{
                         fontFamily: specimen,
                         padding: 8,

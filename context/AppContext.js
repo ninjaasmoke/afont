@@ -11,6 +11,8 @@ export function AppWrapper({ children }) {
     const [selBgImgType, setSelBgImgType] = useState('nl')
     const [fontState, setFontState] = useState(fontOptions)
 
+    const [allPages, setAllPages] = useState([])
+
     return (
         <AppContext.Provider value=
             {{
@@ -18,10 +20,12 @@ export function AppWrapper({ children }) {
                 showMobileWarning,
                 selBgImgType,
                 fontState,
+                allPages,
                 setShowCookieModal,
                 setShowMobileWarning,
                 setSelBgImgType,
                 setFontState,
+                setAllPages,
                 setCookie,
                 getCookie
             }}>
