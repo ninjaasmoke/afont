@@ -26,7 +26,7 @@ export default function Home() {
     if (getCookie(Strings.USER_COOKIE_CONSENT)) {
       setShowCookieModal(false)
     }
-    if (window.innerWidth <= 600 && !getCookie(Strings.USER_MOBILE_WARNING && isMobile)) {
+    if (window.innerWidth <= 600 && !getCookie(Strings.USER_MOBILE_WARNING) && isMobile) {
       setShowMobileWarning(true)
     }
   }, [])

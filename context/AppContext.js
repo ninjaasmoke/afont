@@ -8,7 +8,7 @@ export function AppWrapper({ children }) {
     const [showCookieModal, setShowCookieModal] = useState(true)
     const [showMobileWarning, setShowMobileWarning] = useState(false)
 
-    const [selBgImgType, setSelBgImgType] = useState('l')
+    const [selBgImgType, setSelBgImgType] = useState('nl')
     const [fontState, setFontState] = useState(fontOptions)
 
     return (

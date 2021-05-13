@@ -5,5 +5,6 @@ export const fontOptions = {
     wordSpacing: 0,
     letterSpacing: 0,
     lineHeight: 24,
-    fColor: '#000000'
+    fColor: '#000000',
+    fontWeight: 400,
 }

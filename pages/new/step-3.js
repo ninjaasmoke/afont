@@ -32,6 +32,7 @@ export default function Step3() {
     const [wSpace, setWSpace] = useState(fontState.wordSpacing)
     const [lHeight, setLHeight] = useState(fontState.lineHeight)
     const [fColor, setFColor] = useState(fontState.fColor)
+    const [fWeight, setFWeight] = useState(fontState.fontWeight)
 
     const [pageId, setPageId] = useState([1])
     const newP = <Page
@@ -45,7 +46,7 @@ export default function Step3() {
         lSpace={lSpace}
         wSpace={wSpace}
         lHeight={lHeight}
-        defText={pageId.length == 1 ? null : ""}
+        fWeight={fWeight}
     />;
     const [pages, setPages] = useState([newP])
 
@@ -92,6 +93,12 @@ export default function Step3() {
         updateFontElem('color', e.target.value)
     }
 
+    const handleFWeight = (e) => {
+        setFWeight(e.target.value)
+        setFontState({ ...fontState, fontWeight: fWeight })
+        updateFontElem('fontWeight', e.target.value)
+    }
+
     const getRandBg = Math.floor(Math.random() * bgImgs.src.length)
 
     const addNewPage = () => { setPages([...pages, newP]); setPageId([...pageId, pageId[pageId.length - 1] + 1]) }
@@ -130,10 +137,10 @@ export default function Step3() {
                         <input type="range" min="10" max="30" value={fontSize} onChange={e => handleFont(e)} class="slider" id="fontSize" name="fontSize" />
 
                         <label htmlFor="tPadding">Top Padding: {tPadding}</label>
-                        <input type="range" min="0" max="70" step="2" value={tPadding} onChange={e => handleTPadding(e)} class="slider" id="tPadding" name="tPadding" />
+                        <input type="range" min="0" max="80" step="2" value={tPadding} onChange={e => handleTPadding(e)} class="slider" id="tPadding" name="tPadding" />
 
                         <label htmlFor="lPadding">Left Padding: {lPadding}</label>
-                        <input type="range" min="0" max="70" step="2" value={lPadding} onChange={e => handleLPadding(e)} class="slider" id="lPadding" name="lPadding" />
+                        <input type="range" min="0" max="80" step="2" value={lPadding} onChange={e => handleLPadding(e)} class="slider" id="lPadding" name="lPadding" />
 
                         <label htmlFor="lSpace">Letter Spacing: {lSpace}</label>
                         <input type="range" min="0" max="8" value={lSpace} onChange={e => handleLSpace(e)} class="slider" id="lSpace" name="lSpace" />
@@ -143,6 +150,9 @@ export default function Step3() {
 
                         <label htmlFor="lHeight">Line Height: {lHeight} <span className={stepStyle.caution}>Use with caution.</span> </label>
                         <input type="range" min="12" max="30" step="1" value={lHeight} onChange={e => handleLHeight(e)} class="slider" id="lHeight" name="lHeight" />
+
+                        {/* <label htmlFor="fWeight">Font Weight: {fWeight}</label>
+                        <input type="range" min="400" max="700" step="100" value={fWeight} onChange={e => handleFWeight(e)} class="slider" id="lHeight" name="lHeight" /> */}
 
                         <label htmlFor="fColor">Font Color: {fColor}</label>
                         <div className={stepStyle.swatch}>
@@ -192,7 +202,8 @@ const Page = ({
     wSpace,
     lHeight,
     pageID,
-    defText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!"
+    fWeight,
+    // defText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!"
 }) => {
     return (
         <div>
@@ -200,13 +211,16 @@ const Page = ({
                 src={bgImgs.src[0]}
             />
             <div className={stepStyle.imgText}>
-                <textarea type="text" name={pageID} id={pageID} className={stepStyle.pageInp + " pageInpt"} autoCorrect="false" spellCheck="false"
-                    defaultValue={defText}
+                <textarea
+                    type="text" name={pageID}
+                    id={pageID} className={stepStyle.pageInp + " pageInpt"} autoCorrect="false" spellCheck="false"
+                    defaultValue={pageID == 1 ? 'Type here! Lorem Ipsum...' : ''}
                     style={{
                         fontFamily: specimen,
                         padding: 8,
                         color: fColor,
                         fontSize: fontSize + 'px',
+                        fontWeight: fWeight,
                         paddingTop: tPadding + 'px',
                         paddingLeft: lPadding + 'px',
                         lineHeight: lHeight + 'px',
