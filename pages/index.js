@@ -22,10 +22,11 @@ export default function Home() {
   }
 
   useEffect(() => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (getCookie(Strings.USER_COOKIE_CONSENT)) {
       setShowCookieModal(false)
     }
-    if (window.innerWidth <= 600 && !getCookie(Strings.USER_MOBILE_WARNING)) {
+    if (window.innerWidth <= 600 && !getCookie(Strings.USER_MOBILE_WARNING && isMobile)) {
       setShowMobileWarning(true)
     }
   }, [])
