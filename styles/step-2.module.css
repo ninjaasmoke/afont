@@ -86,3 +86,9 @@
     border-style: solid;
     border-color: #6cc644 transparent transparent transparent;
 }
+
+@media (max-width: 600px) {
+    .pickBG ul {
+        grid-template-columns: auto;
+    }
+}
