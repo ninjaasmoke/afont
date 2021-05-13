@@ -17,7 +17,6 @@
     /* box-shadow: 0px 0px 6px 1px #18181831; */
     position: relative;
     display: inline-block;
-    height: min-content;
     transition-duration: 200ms;
     border: 4px solid var(--color);
     width: 100%;
@@ -87,8 +86,33 @@
     border-color: #6cc644 transparent transparent transparent;
 }
 
+@media (max-width: 900px) and (min-width: 601px) {
+    .pickBG ul {
+        grid-template-columns: auto auto;
+    }
+
+    .pickBG ul li {
+        width: 100%;
+        height: calc(((100vw - 40px)/2 - 10px) * 1.14);
+    }
+}
+
 @media (max-width: 600px) {
     .pickBG ul {
         grid-template-columns: auto;
+        padding: 0;
+    }
+
+    .pickBG ul li {
+        width: 100%;
+        height: calc((100vw - 40px) * 1.414);
+    }
+
+    .pickBG ul li .tooltiptext {
+        bottom: 100%;
+    }
+
+    .checked {
+        bottom: 100%;
     }
 }

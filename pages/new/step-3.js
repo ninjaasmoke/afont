@@ -198,8 +198,6 @@ const Page = ({
         <div>
             <img
                 src={bgImgs.src[0]}
-                height={700}
-                width={495}
             />
             <div className={stepStyle.imgText}>
                 <textarea type="text" name={pageID} id={pageID} className={stepStyle.pageInp + " pageInpt"} autoCorrect="false" spellCheck="false"

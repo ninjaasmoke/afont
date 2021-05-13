@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-evenly;
     padding: 0 32px 32px;
+    overflow-y: hidden;
 }
 
 .currImg {
@@ -39,6 +40,15 @@
     align-items: center;
 }
 
+.pageLeaf div {
+    /* max-width: calc(100% - 32px); */
+    max-width: 80%;
+}
+
+.pageLeaf img {
+    width: 100%;
+}
+
 .deleteImg {
     padding: 8px;
     min-width: 20px;
@@ -59,8 +69,8 @@
     position: absolute;
     top: 0;
     color: black;
-    height:700px;
-    width:495px;
+    height: 100%;
+    width: 100%;
 }
 
 .imgText input[type="text"] {
@@ -89,21 +99,6 @@
     color: var(--accent);
     border: none;
     margin-bottom: 24px;
-}
-
-  
-.swatch .info{
-    padding: 1em;
-}
-
-.swatch h1{
-    margin: 0;
-    text-transform: uppercase;
-}
-
-.swatch h2{
-    font-weight: normal;
-    margin: 0;
 }
 
 .swatch input[type="color"] {
@@ -148,13 +143,6 @@
     color: inherit;
 }
 
-@media (min-width: 769px) {
-    .editWrapper {
-        position: sticky;
-        top: 96px;
-    }
-}
-
 @media (max-width: 976px) {
     .editWrapper { 
         flex-direction: column;
@@ -162,6 +150,20 @@
 
     .currImg {
         width: 100%;
+    }
+    
+    .pageLeaf img {
+        width: 100%;
+    }
+
+    .imgText {
+        width: calc(100% - 20px);
+    }
+
+    .deleteImg {
+        position: absolute;
+        right: -28px;
+        justify-content: flex-start;
     }
 
     .editFontWrapper {
