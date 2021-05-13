@@ -128,4 +128,19 @@
     .fonts {
         grid-template-columns: auto;
     }
+
+    .h1Buttons a {
+        position: fixed;
+        top: calc(100vh);
+        right: 10%;
+        transform: translateX(10%);
+        z-index: 1;
+        padding: 12px 24px;
+
+        animation: animButton 300ms ease-in 400ms forwards;
+    }
+
+    @keyframes animButton {
+        to {top: calc(100vh - 48px)}
+    }
 }
