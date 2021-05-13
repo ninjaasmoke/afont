@@ -24,12 +24,14 @@ export default function Step3() {
         query: { specimen },
     } = router;
     const fontExists = getFontNames().includes(specimen)
+
     const [fontSize, setFontSize] = useState(fontState.fontSize)
     const [lPadding, setlPadding] = useState(fontState.paddingLeft)
     const [tPadding, settPadding] = useState(fontState.paddingTop)
     const [lSpace, setLSpace] = useState(fontState.letterSpacing)
     const [wSpace, setWSpace] = useState(fontState.wordSpacing)
     const [lHeight, setLHeight] = useState(fontState.lineHeight)
+    const [fColor, setFColor] = useState(fontState.fColor)
 
     const handleFont = (e) => {
         setFontSize(e.target.value)
@@ -67,6 +69,12 @@ export default function Step3() {
         updateFontElem('lineHeight', e.target.value + 'px')
     }
 
+    const handleFColor = (e) => {
+        setFColor(e.target.value)
+        setFontState({ ...fontState, fColor: fColor })
+        updateFontElem('color', e.target.value)
+    }
+
     const getRandBg = Math.floor(Math.random() * bgImgs.src.length)
 
     return (
@@ -95,11 +103,11 @@ export default function Step3() {
                         <label htmlFor="fontSize">Font Size: {fontSize}</label>
                         <input type="range" min="10" max="30" value={fontSize} onChange={e => handleFont(e)} class="slider" id="fontSize" name="fontSize" />
 
-                        <label htmlFor="lPadding">Left Padding: {lPadding}</label>
-                        <input type="range" min="0" max="70" step="2" value={lPadding} onChange={e => handleLPadding(e)} class="slider" id="lPadding" name="lPadding" />
-
                         <label htmlFor="tPadding">Top Padding: {tPadding}</label>
                         <input type="range" min="0" max="70" step="2" value={tPadding} onChange={e => handleTPadding(e)} class="slider" id="tPadding" name="tPadding" />
+
+                        <label htmlFor="lPadding">Left Padding: {lPadding}</label>
+                        <input type="range" min="0" max="70" step="2" value={lPadding} onChange={e => handleLPadding(e)} class="slider" id="lPadding" name="lPadding" />
 
                         <label htmlFor="lSpace">Letter Spacing: {lSpace}</label>
                         <input type="range" min="0" max="8" value={lSpace} onChange={e => handleLSpace(e)} class="slider" id="lSpace" name="lSpace" />
@@ -109,56 +117,75 @@ export default function Step3() {
 
                         <label htmlFor="lHeight">Line Height: {lHeight} <span className={stepStyle.caution}>Use with caution.</span> </label>
                         <input type="range" min="12" max="30" step="1" value={lHeight} onChange={e => handleLHeight(e)} class="slider" id="lHeight" name="lHeight" />
+
+                        <label htmlFor="fColor">Font Color: {fColor}</label>
+                        <div className={stepStyle.swatch}>
+                            <input type="color" id="fColor" name="fColor" value={fColor} onChange={e => handleFColor(e)} />
+                            {/* <div class="info">
+                                <h1>Input</h1>
+                                <h2>Color</h2>
+                            </div> */}
+                        </div>
                     </div>
                 </div>
 
                 <div className={stepStyle.currImg}>
                     <h4>Selected background.</h4>
+
                     <div className={stepStyle.imgWrapper}>
-                        <img
-                            src={bgImgs.src[getRandBg]}
-                            height={700}
-                            width={495}
-                        />
-                        <div
-                            className={stepStyle.imgText}
-                            id="pages"
-                            style={{
-                                fontFamily: specimen,
-                                padding: 8,
-                                fontSize: fontSize + 'px',
-                                paddingTop: tPadding + 'px',
-                                paddingLeft: lPadding + 'px',
-                                lineHeight: lHeight + 'px',
-                                letterSpacing: lSpace + 'px',
-                                wordSpacing: wSpace + 'px',
-                                overflow: 'hidden'
-                            }}
-                        >
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                            molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                            numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                            optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-                            obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-                            nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-                            tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-                            quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
-                            sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-                            recusandae alias error harum maxime adipisci amet laborum. Perspiciatis
-                            minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit
-                            quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur
-                            fugiat, temporibus enim commodi iusto libero magni deleniti quod quam
-                            consequuntur! Commodi minima excepturi repudiandae velit hic maxime
-                            doloremque. Quaerat provident commodi consectetur veniam similique ad
-                            earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo
-                            fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore
-                            suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium
-                            modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam
-                            totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam
-                            quasi aliquam eligendi, placeat qui corporis!
-                        </div>
+                        <Page
+                            bgImgs={bgImgs}
+                            getRandBg={getRandBg}
+                            specimen={specimen}
+                            fontSize={fontSize}
+                            tPadding={tPadding}
+                            lPadding={lPadding}
+                            lSpace={lSpace}
+                            wSpace={wSpace}
+                            lHeight={lHeight} />
                     </div>
                 </div>
+            </div>
+        </div>
+    )
+}
+
+const Page = ({
+    bgImgs,
+    getRandBg,
+    specimen,
+    fontSize,
+    tPadding,
+    lPadding,
+    lSpace,
+    wSpace,
+    lHeight,
+    defText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!"
+}) => {
+    return (
+        <div className={stepStyle.pageLeaf}>
+            <img
+                src={bgImgs.src[0]}
+                height={700}
+                width={495}
+            />
+            <div
+                className={stepStyle.imgText}
+                id="pages"
+                style={{
+                    fontFamily: specimen,
+                    padding: 8,
+                    fontSize: fontSize + 'px',
+                    paddingTop: tPadding + 'px',
+                    paddingLeft: lPadding + 'px',
+                    lineHeight: lHeight + 'px',
+                    letterSpacing: lSpace + 'px',
+                    wordSpacing: wSpace + 'px',
+                    overflow: 'hidden'
+                }}
+            >
+                <textarea type="text" name="page" className={stepStyle.pageInp} autoCorrect="false" spellCheck="false"
+                    defaultValue={defText} />
             </div>
         </div>
     )
