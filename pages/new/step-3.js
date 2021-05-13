@@ -44,7 +44,9 @@ export default function Step3() {
         lPadding={lPadding}
         lSpace={lSpace}
         wSpace={wSpace}
-        lHeight={lHeight} />;
+        lHeight={lHeight}
+        defText={pageId.length == 1 ? null : ""}
+    />;
     const [pages, setPages] = useState([newP])
 
 
@@ -91,6 +93,15 @@ export default function Step3() {
     }
 
     const getRandBg = Math.floor(Math.random() * bgImgs.src.length)
+
+    const addNewPage = () => { setPages([...pages, newP]); setPageId([...pageId, pageId[pageId.length - 1] + 1]) }
+
+    const delPage = (index) => {
+        if (confirm('Are you sure you want to delete this page?')) {
+            setPageId(pageId.splice(index, 1))
+            setPages(pages.splice(index, 1))
+        }
+    }
 
     return (
         <div className={utils.container}>
@@ -150,15 +161,18 @@ export default function Step3() {
                     <div className={stepStyle.imgWrapper}>
                         {
                             pages.map((page, index) => (
-                                <div key={index}>
+                                <div key={index} className={stepStyle.pageLeaf}>
                                     {page}
+                                    <span className={stepStyle.deleteImg}>
+                                        <img src='/images/del_red.svg' onClick={() => delPage(index)} title="Delete this page" />
+                                    </span>
                                 </div>
                             ))
                         }
 
                         <button
                             className={utils.nextButton} style={{ marginTop: 20 }}
-                            onClick={() => { setPages([...pages, newP]); setPageId([...pageId, pageId[pageId.length - 1] + 1]) }}
+                            onClick={() => addNewPage()}
                         >Add page</button>
                     </div>
                 </div>
@@ -181,7 +195,7 @@ const Page = ({
     defText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!"
 }) => {
     return (
-        <div className={stepStyle.pageLeaf}>
+        <div>
             <img
                 src={bgImgs.src[0]}
                 height={700}
