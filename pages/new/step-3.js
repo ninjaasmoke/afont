@@ -18,7 +18,7 @@ const updateFontElem = (attr, val) => getElement().forEach(c => c.style[attr] = 
 
 export default function Step3() {
 
-    const { selBgImgType, fontState, setFontState, setAllPages, allPages, setNPages } = useAppContext()
+    const { selBgImgType, fontState, setFontState, setAllPages, allPages } = useAppContext()
 
     const bgImgs = bgImages.filter(c => c.name == selBgImgType)[0]
 
@@ -52,7 +52,7 @@ export default function Step3() {
         lHeight={lHeight}
         fWeight={fWeight}
     />;
-    const [pages, setPages] = useState([newP()])
+    const [pages, setPages] = useState([newP(0)])
 
 
     const handleFont = (e) => {
@@ -128,23 +128,26 @@ export default function Step3() {
         }
     }
 
-    const download = () => {
+    const download = async () => {
         if (confirm('You cannot make any more changes! Continue?')) {
-            setNPages(pages.length)
+            var allP = []
             for (let i = 0; i < pages.length; i++) {
                 // const input = document.getElementsByClassName('thisIsAPage')[0];
-                const input = document.getElementById(i);
-                toPng(input, {
-                    pixelRatio: 2,
-                })
-                    .then(function (dataUrl) {
-                        setAllPages([...allPages, dataUrl])
-                    })
-                    .catch(function (error) {
-                        console.error('Oops, something went wrong!', error);
-                        alert('Something went wrong: ' + error)
-                    });
+                let input = document.getElementById(i);
+                console.log(input.className, input.id)
+                let dataUrl;
+                try {
+                    dataUrl = await toPng(input, { pixelRatio: 2 });
+                    if (dataUrl) {
+                        allP.push(dataUrl)
+                    }
+                } catch (error) {
+                    console.error('Oops, something went wrong!', error);
+                    alert('Something went wrong: ' + error)
+                }
             }
+            setAllPages([...allP])
+            router.push('/new/step-4')
         }
     }
 
@@ -182,10 +185,10 @@ export default function Step3() {
                                     <input type="range" min="10" max="30" value={fontSize} onChange={e => handleFont(e)} className="slider" id="fontSize" name="fontSize" />
 
                                     <label htmlFor="tPadding">Top Padding: {tPadding}</label>
-                                    <input type="range" min="0" max="80" step="2" value={tPadding} onChange={e => handleTPadding(e)} className="slider" id="tPadding" name="tPadding" />
+                                    <input type="range" min="0" max="100" step="2" value={tPadding} onChange={e => handleTPadding(e)} className="slider" id="tPadding" name="tPadding" />
 
                                     <label htmlFor="lPadding">Left Padding: {lPadding}</label>
-                                    <input type="range" min="0" max="80" step="2" value={lPadding} onChange={e => handleLPadding(e)} className="slider" id="lPadding" name="lPadding" />
+                                    <input type="range" min="0" max="100" step="2" value={lPadding} onChange={e => handleLPadding(e)} className="slider" id="lPadding" name="lPadding" />
 
                                     <label htmlFor="lSpace">Letter Spacing: {lSpace}</label>
                                     <input type="range" min="0" max="8" value={lSpace} onChange={e => handleLSpace(e)} className="slider" id="lSpace" name="lSpace" />
@@ -233,7 +236,6 @@ export default function Step3() {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
             }

@@ -16,6 +16,7 @@ export default function Step4() {
         query: { specimen },
     } = router;
     const fontExists = getFontNames().includes(specimen)
+
     return (
         <div className={utils.container}>
             <Head>
@@ -47,7 +48,7 @@ export default function Step4() {
             <div>
                 {allPages.map((c, i) => (
                     <div key={i} >
-                        {c}
+                        <img src={c} />
                     </div>
                 ))}
             </div>

@@ -14,7 +14,6 @@ export function AppWrapper({ children }) {
     const [selFont, setSelFont] = useState('')
 
     const [allPages, setAllPages] = useState([])
-    const [nPages, setNPages] = useState(0)
 
     return (
         <AppContext.Provider value=
@@ -25,14 +24,12 @@ export function AppWrapper({ children }) {
                 fontState,
                 allPages,
                 selFont,
-                nPages,
                 setShowCookieModal,
                 setShowMobileWarning,
                 setSelBgImgType,
                 setFontState,
                 setAllPages,
                 setSelFont,
-                setNPages,
                 setCookie,
                 getCookie
             }}>
