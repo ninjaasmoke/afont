@@ -18,7 +18,7 @@ const updateFontElem = (attr, val) => getElement().forEach(c => c.style[attr] = 
 
 export default function Step3() {
 
-    const { selBgImgType, fontState, setFontState, setAllPages, allPages, selFont } = useAppContext()
+    const { selBgImgType, fontState, setFontState, setAllPages, allPages, setNPages } = useAppContext()
 
     const bgImgs = bgImages.filter(c => c.name == selBgImgType)[0]
 
@@ -128,10 +128,9 @@ export default function Step3() {
         }
     }
 
-    const [placeHolder, setPlaceHolder] = useState('')
-
     const download = () => {
         if (confirm('You cannot make any more changes! Continue?')) {
+            setNPages(pages.length)
             for (let i = 0; i < pages.length; i++) {
                 // const input = document.getElementsByClassName('thisIsAPage')[0];
                 const input = document.getElementById(i);
@@ -139,7 +138,7 @@ export default function Step3() {
                     pixelRatio: 2,
                 })
                     .then(function (dataUrl) {
-                        setPlaceHolder(dataUrl)
+                        setAllPages([...allPages, dataUrl])
                     })
                     .catch(function (error) {
                         console.error('Oops, something went wrong!', error);
@@ -236,7 +235,6 @@ export default function Step3() {
                             </div>
 
                         </div>
-                        <img src={placeHolder} />
                     </div>
             }
         </>
