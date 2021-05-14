@@ -9,7 +9,7 @@ export default function Nav({ linkTo, navTitle }) {
             {
                 linkTo &&
                 <Link href={linkTo}>
-                    <a>&larr; Back</a>
+                    <a>&larr; {linkTo == '/' ? 'Home' : 'Back'}</a>
                 </Link>
             }
             {

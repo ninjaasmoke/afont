@@ -27,7 +27,7 @@ export default function Step4() {
             <link href={"https://fonts.googleapis.com/css2?family=" + specimen + "&display=swap"} rel="stylesheet" />
 
 
-            <Nav navTitle="Create" />
+            <Nav navTitle="Create" linkTo="/" />
 
             <InstrStep steps={4} />
 

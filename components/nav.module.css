@@ -14,7 +14,7 @@
 
 .nav a, .nav span {
     font-size: .9rem;
-    width: 50px;
+    width: 60px;
 }
 
 .nav span {
@@ -45,7 +45,7 @@
 }
 
 .navRSpace {
-    width: 50px;
+    width: 60px;
 }
 
 @media (max-width: 600px) {
