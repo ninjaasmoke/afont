@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import Nav from '../../components/nav'
 import InstrStep from '../../components/instrstep'
-import Loading from '../../components/loading'
+// import Loading from '../../components/loading'
 import utils from '../../styles/utils.module.css'
 import stepStyle from '../../styles/step-4.module.css'
 import { useAppContext } from '../../context/AppContext'
@@ -14,26 +14,26 @@ import { useEffect, useState } from 'react'
 
 export default function Step4() {
 
-    const router = useRouter();
+    // const router = useRouter();
     const { allPages } = useAppContext()
     const doc = new jsPDF();
     // const zip = new JSZip();
 
-    const [progress, setProgress] = useState(0)
+    // const [progress, setProgress] = useState(0)
+
+    const generatePDF = () => {
+        for (let i = 0; i < allPages.length; i++) {
+            doc.addImage(allPages[i], 'PNG', 0, 0, 210, 297, 'MEDIUM', 'MEDIUM')
+            doc.addPage()
+        }
+    }
 
     useEffect(() => {
         for (let i = 0; i < allPages.length; i++) {
-            const page = allPages[i];
-            doc.addImage(page, 'PNG', 0, 0, 210, 297, 'MEDIUM', 'MEDIUM')
-            doc.addPage('')
-            setProgress((i + 1) / allPages.length * 100)
+            doc.addImage(allPages[i], 'PNG', 0, 0, 210, 297, 'MEDIUM', 'MEDIUM')
+            doc.addPage()
         }
     }, [])
-
-    const display = {
-        'loading': <Loading radius={60} stroke={4} progress={progress} />,
-        'ready': ''
-    }
 
     return (
         <div className={utils.container}>
@@ -51,23 +51,18 @@ export default function Step4() {
             <div className={utils.h1}>
                 <div><h1>Download your pdf.</h1> <span title="Selected font" >⚡</span> </div>
             </div>
-
-            {
-                progress === 100
-                    ? <div className={stepStyle.buttons}>
-                        <button onClick={() => { doc.save('ex.pdf') }} className={stepStyle.download} ><img src="/images/download.svg" />{' '} Download PDF</button>
+            <div className={stepStyle.buttons}>
+                <button onClick={() => { doc.save('ex.pdf') }} className={stepStyle.download} ><img src="/images/download.svg" />{' '} Download PDF</button>
 
 
-                        {/* <button onClick={() => {
+                {/* <button onClick={() => {
                             zip.generateAsync({ type: 'blob' }).then((c) => {
                                 saveAs(c, 'ex.zip')
                             })
                         }} className={stepStyle.download} ><img src="/images/download.svg" />{' '} Download ZIP</button> */}
 
 
-                    </div>
-                    : display['loading']
-            }
+            </div>
         </div>
     )
 }
