@@ -35,12 +35,9 @@ export default function Step4() {
                 <div><h1>Download your pdf.</h1> <span style={{ fontFamily: specimen }} title="Selected font" >{specimen}{' '}⚡</span> </div>
                 {/* <div className={utils.h1Buttons}>
                     <Link href={{
-                        pathname: "/new/step-4",
-                        query: {
-                            specimen: specimen
-                        }
+                        pathname: "/",
                     }}>
-                        Next &rarr;
+                        Home &rarr;
                     </Link>
                 </div> */}
             </div>

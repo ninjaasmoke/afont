@@ -3,7 +3,7 @@ import Nav from '../../components/nav'
 import InstrStep from '../../components/instrstep'
 import utils from '../../styles/utils.module.css'
 import stepStyle from '../../styles/step-3.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { getFontNames } from '../../lib/fonts'
 import { useAppContext } from '../../context/AppContext'
@@ -11,6 +11,7 @@ import { bgImages } from '../../helper/bgImages'
 import FourOhFour from '../404'
 
 import { toPng } from 'html-to-image';
+import Loading from '../../components/loading'
 
 const getElement = (id = '.pageInpt') => document.querySelectorAll(id)
 
@@ -128,11 +129,16 @@ export default function Step3() {
         }
     }
 
+    const [progress, setProgress] = useState(0)
+
     const download = async () => {
         if (confirm('You cannot make any more changes! Continue?')) {
+            window.scrollTo(0, 0)
+            setShowDisplay('loading')
             var allP = []
             for (let i = 0; i < pages.length; i++) {
                 // const input = document.getElementsByClassName('thisIsAPage')[0];
+                setProgress(i / pages.length * 100)
                 let input = document.getElementById(i);
                 console.log(input.className, input.id)
                 let dataUrl;
@@ -150,6 +156,16 @@ export default function Step3() {
             router.push('/new/step-4')
         }
     }
+
+    const [showDisplay, setShowDisplay] = useState('ready')
+
+
+    const toDisplay = {
+        'loading': <Loading radius={60} stroke={6} progress={progress} />,
+        'ready': ''
+    }
+
+
 
     return (
         <>
@@ -171,10 +187,13 @@ export default function Step3() {
                         <div className={utils.h1}>
                             <div><h1>Add the text.</h1> <span style={{ fontFamily: specimen }} title="Selected font" >{specimen}{' '}⚡</span> </div>
                             <div className={utils.h1Buttons}>
-                                <button className={utils.nextButton + ' ' + utils.animateNext} onClick={() => download()} >Download &rarr;</button>
+                                <button className={utils.nextButton + ' ' + utils.animateNext} onClick={() => download()} >
+                                    Download  →
+                                </button>
                             </div>
                         </div>
 
+                        {toDisplay[showDisplay]}
 
                         <div className={stepStyle.editWrapper}>
 
@@ -200,7 +219,7 @@ export default function Step3() {
                                     <input type="range" min="12" max="30" step="1" value={lHeight} onChange={e => handleLHeight(e)} className="slider" id="lHeight" name="lHeight" />
 
                                     {/* <label htmlFor="fWeight">Font Weight: {fWeight}</label>
-                            <input type="range" min="400" max="700" step="100" value={fWeight} onChange={e => handleFWeight(e)} className="slider" id="lHeight" name="lHeight" /> */}
+        <input type="range" min="400" max="700" step="100" value={fWeight} onChange={e => handleFWeight(e)} className="slider" id="lHeight" name="lHeight" /> */}
 
                                     <label htmlFor="fColor">Font Color: {fColor}</label>
                                     <div className={stepStyle.swatch}>
@@ -218,8 +237,8 @@ export default function Step3() {
                                             <div key={index} className={stepStyle.pageLeaf + ' thisIsAPage'} id={pageId[index]}  >
                                                 {page}
                                                 {/* <span className={stepStyle.deleteImg}>
-                                            <img src='/images/del_red.svg' onClick={() => delPage(index)} title="Delete this page" />
-                                        </span> */}
+                        <img src='/images/del_red.svg' onClick={() => delPage(index)} title="Delete this page" />
+                    </span> */}
                                             </div>
                                         ))
                                     }
@@ -237,6 +256,7 @@ export default function Step3() {
                                 </div>
                             </div>
                         </div>
+
                     </div>
             }
         </>
