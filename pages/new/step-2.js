@@ -22,7 +22,7 @@ export default function Step2() {
     } = router;
     const fontExists = getFontNames().includes(specimen)
 
-    const toolTips = ['Only Lines', 'Margin & Line', 'Only Margin', 'No Lines']
+    const toolTips = ['No Lines', 'Only Margin', 'Lines', 'Margin & Lines']
 
     const [selectedImg, setSelectedImg] = useState(bgImages.filter(c => c.name == selBgImgType)[0].src[0])
     return (
