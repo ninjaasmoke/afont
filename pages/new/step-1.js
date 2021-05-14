@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import InstrStep from '../../components/instrstep'
 import Nav from '../../components/nav'
+import { useAppContext } from '../../context/AppContext'
 import { getFontNames } from '../../lib/fonts'
 import styles from '../../styles/New.module.css'
 import utils from '../../styles/utils.module.css'
@@ -17,6 +18,9 @@ export async function getStaticProps() {
 
 
 export default function Step1({ fonts }) {
+
+    const { setSelFont } = useAppContext()
+
     return (
         <div className={styles.container}>
             <Head>
@@ -35,7 +39,7 @@ export default function Step1({ fonts }) {
                         pathname: "/new/step-2",
                         query: { specimen: font }
                     }}>
-                        <a className={utils.font} >
+                        <a className={utils.font} onClick={() => setSelFont(font)} >
                             <span className={utils.fontName}>{font}</span>
                             <p className={utils.fontText} style={{ fontFamily: '"' + font + '"', }}>
                                 The quick brown fox jumps over the lazy fox.

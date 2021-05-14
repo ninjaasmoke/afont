@@ -11,6 +11,8 @@ export function AppWrapper({ children }) {
     const [selBgImgType, setSelBgImgType] = useState('nl')
     const [fontState, setFontState] = useState(fontOptions)
 
+    const [selFont, setSelFont] = useState('')
+
     const [allPages, setAllPages] = useState([])
 
     return (
@@ -21,11 +23,13 @@ export function AppWrapper({ children }) {
                 selBgImgType,
                 fontState,
                 allPages,
+                selFont,
                 setShowCookieModal,
                 setShowMobileWarning,
                 setSelBgImgType,
                 setFontState,
                 setAllPages,
+                setSelFont,
                 setCookie,
                 getCookie
             }}>

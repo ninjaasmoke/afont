@@ -76,6 +76,17 @@
     cursor: pointer;
 }
 
+.animateNext {
+    position: fixed;
+    top: 100vh;
+    right: 2%;
+    transform: translateX(2%);
+    z-index: 1;
+    padding: 12px 24px;
+
+    animation: animButton 300ms ease 400ms forwards;
+}
+
 .redButton {
     background-color: transparent;
     border-radius: 100px;

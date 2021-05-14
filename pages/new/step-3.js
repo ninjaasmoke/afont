@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import Nav from '../../components/nav'
 import InstrStep from '../../components/instrstep'
 import utils from '../../styles/utils.module.css'
@@ -11,13 +10,15 @@ import { useAppContext } from '../../context/AppContext'
 import { bgImages } from '../../helper/bgImages'
 import FourOhFour from '../404'
 
+import { toPng } from 'html-to-image';
+
 const getElement = (id = '.pageInpt') => document.querySelectorAll(id)
 
 const updateFontElem = (attr, val) => getElement().forEach(c => c.style[attr] = val.toString())
 
 export default function Step3() {
 
-    const { selBgImgType, fontState, setFontState, setAllPages, allPages } = useAppContext()
+    const { selBgImgType, fontState, setFontState, setAllPages, allPages, selFont } = useAppContext()
 
     const bgImgs = bgImages.filter(c => c.name == selBgImgType)[0]
 
@@ -36,9 +37,10 @@ export default function Step3() {
     const [fColor, setFColor] = useState(fontState.fColor)
     const [fWeight, setFWeight] = useState(fontState.fontWeight)
 
+    const getRandBg = Math.floor(Math.random() * bgImgs.src.length)
     const [pageId, setPageId] = useState([0])
     const newP = (num = 0) => <Page
-        bgImgs={bgImgs}
+        bgImg={bgImgs.src[getRandBg]}
         specimen={specimen}
         pageID={num}
         color={fColor}
@@ -101,8 +103,6 @@ export default function Step3() {
         updateFontElem('fontWeight', e.target.value)
     }
 
-    const getRandBg = Math.floor(Math.random() * bgImgs.src.length)
-
     const addNewPage = () => {
         let id = pageId[pageId.length - 1]
         setPageId([...pageId, id + 1]);
@@ -128,6 +128,27 @@ export default function Step3() {
         }
     }
 
+    const [placeHolder, setPlaceHolder] = useState('')
+
+    const download = () => {
+        if (confirm('You cannot make any more changes! Continue?')) {
+            for (let i = 0; i < pages.length; i++) {
+                // const input = document.getElementsByClassName('thisIsAPage')[0];
+                const input = document.getElementById(i);
+                toPng(input, {
+                    pixelRatio: 2,
+                })
+                    .then(function (dataUrl) {
+                        setPlaceHolder(dataUrl)
+                    })
+                    .catch(function (error) {
+                        console.error('Oops, something went wrong!', error);
+                        alert('Something went wrong: ' + error)
+                    });
+            }
+        }
+    }
+
     return (
         <>
             {
@@ -148,16 +169,7 @@ export default function Step3() {
                         <div className={utils.h1}>
                             <div><h1>Add the text.</h1> <span style={{ fontFamily: specimen }} title="Selected font" >{specimen}{' '}⚡</span> </div>
                             <div className={utils.h1Buttons}>
-                                <Link href={{
-                                    pathname: "/new/step-4",
-                                    query: {
-                                        specimen: specimen
-                                    }
-                                }}>
-                                    <a onClick={() => {
-                                        setAllPages([...pages])
-                                    }}>Download &rarr;</a>
-                                </Link>
+                                <button className={utils.nextButton + ' ' + utils.animateNext} onClick={() => download()} >Download &rarr;</button>
                             </div>
                         </div>
 
@@ -191,10 +203,6 @@ export default function Step3() {
                                     <label htmlFor="fColor">Font Color: {fColor}</label>
                                     <div className={stepStyle.swatch}>
                                         <input type="color" id="fColor" name="fColor" value={fColor} onChange={e => handleFColor(e)} />
-                                        {/* <div className="info">
-                                    <h1>Input</h1>
-                                    <h2>Color</h2>
-                                </div> */}
                                     </div>
                                 </div>
                             </div>
@@ -205,7 +213,7 @@ export default function Step3() {
                                 <div className={stepStyle.imgWrapper}>
                                     {
                                         pages.map((page, index) => (
-                                            <div key={index} className={stepStyle.pageLeaf}>
+                                            <div key={index} className={stepStyle.pageLeaf + ' thisIsAPage'} id={pageId[index]}  >
                                                 {page}
                                                 {/* <span className={stepStyle.deleteImg}>
                                             <img src='/images/del_red.svg' onClick={() => delPage(index)} title="Delete this page" />
@@ -226,7 +234,9 @@ export default function Step3() {
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+                        <img src={placeHolder} />
                     </div>
             }
         </>
@@ -234,7 +244,7 @@ export default function Step3() {
 }
 
 const Page = ({
-    bgImgs,
+    bgImg,
     specimen,
     fColor,
     fontSize,
@@ -248,9 +258,9 @@ const Page = ({
     // defText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!"
 }) => {
     return (
-        <div id={pageID}  >
+        <div >
             <img
-                src={bgImgs.src[0]}
+                src={bgImg}
             />
             <div className={stepStyle.imgText}>
                 <textarea
@@ -268,7 +278,7 @@ const Page = ({
                         lineHeight: lHeight + 'px',
                         letterSpacing: lSpace + 'px',
                         wordSpacing: wSpace + 'px',
-                        overflow: 'hidden'
+                        overflow: 'hidden',
                     }}
                 />
             </div>
