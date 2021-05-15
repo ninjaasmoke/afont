@@ -1,5 +1,5 @@
 import Head from 'next/head'
-// import { useRouter } from 'next/router'
+import Link from 'next/link'
 import Nav from '../../components/nav'
 import InstrStep from '../../components/instrstep'
 import Loading from '../../components/loading'
@@ -9,12 +9,10 @@ import { useAppContext } from '../../context/AppContext'
 import { jsPDF } from 'jspdf'
 import { useEffect, useState } from 'react'
 import JSZip from 'jszip'
-
 import { saveAs } from 'file-saver'
 
 export default function Step4() {
 
-    // const router = useRouter();
     const { allPages } = useAppContext()
     const doc = new jsPDF();
     const zip = new JSZip();
@@ -46,6 +44,7 @@ export default function Step4() {
     }
 
     useEffect(() => {
+        generatePDF()
         generateZIP()
     }, [])
 
@@ -65,20 +64,22 @@ export default function Step4() {
             </div>
             {
                 progress == 100 || progress == 0
-
-                    ? <div className={stepStyle.buttons}>
-                        <button onClick={() => { generatePDF(); doc.save('ex.pdf') }} className={stepStyle.download} >Download PDF</button>
-
-
+                    ?
+                    <div className={stepStyle.buttons}>
+                        <button onClick={() => { doc.save('ex.pdf') }} className={stepStyle.download} >Download PDF</button>
                         <button onClick={() => downoadZIP()} className={stepStyle.download} >Download ZIP</button>
-
-
                     </div>
 
-                    : <>
+                    :
+                    <>
                         <Loading progress={progress} text="Generating PDF & ZIP" />
                     </>
             }
+            <div className={utils.nextButton}>
+                <Link href="/">
+                    &larr; Back home
+                </Link>
+            </div>
         </div>
     )
 }

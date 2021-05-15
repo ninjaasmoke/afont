@@ -5,7 +5,7 @@
 }
 
 .buttons {
-    margin-top: 8px;
+    margin: 8px 0 40px;
     display: flex;
     width: calc(100% - 64px);
     justify-content: center;
