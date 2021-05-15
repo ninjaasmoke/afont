@@ -41,7 +41,6 @@ export default function Step4() {
     const downoadZIP = () => {
         zip.generateAsync({ type: "blob" })
             .then(function (content) {
-                // Force down of the Zip file
                 saveAs(content, "download.zip");
             });
     }
@@ -62,21 +61,23 @@ export default function Step4() {
             <InstrStep steps={4} />
 
             <div className={utils.h1}>
-                <div><h1>Download your zip.</h1> <span title="Selected font" >⚡</span> </div>
+                <div><h1>Download your files.</h1> <span title="Selected font" >⚡</span> </div>
             </div>
             {
                 progress == 100 || progress == 0
 
                     ? <div className={stepStyle.buttons}>
-                        <button onClick={() => { generatePDF(); doc.save('ex.pdf') }} className={stepStyle.download} ><img src="/images/download.svg" />{' '} Download PDF</button>
+                        <button onClick={() => { generatePDF(); doc.save('ex.pdf') }} className={stepStyle.download} >Download PDF</button>
 
 
-                        <button onClick={() => downoadZIP()} className={stepStyle.download} ><img src="/images/download.svg" />{' '} Download ZIP</button>
+                        <button onClick={() => downoadZIP()} className={stepStyle.download} >Download ZIP</button>
 
 
                     </div>
 
-                    : <Loading radius={60} stroke={4} progress={progress} />
+                    : <>
+                        <Loading progress={progress} text="Generating PDF & ZIP" />
+                    </>
             }
         </div>
     )

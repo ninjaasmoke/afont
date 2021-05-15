@@ -137,14 +137,12 @@ export default function Step3() {
             setShowDisplay('loading')
             var allP = []
             for (let i = 0; i < pages.length; i++) {
-                // const input = document.getElementsByClassName('thisIsAPage')[0];
                 setProgress((i + 1) / pages.length * 100)
                 let input = document.getElementById(i);
                 let dataUrl;
                 try {
                     dataUrl = await toPng(input, { pixelRatio: 1 });
                     if (dataUrl) {
-                        console.log(dataUrl)
                         allP.push(dataUrl)
                     }
                 } catch (error) {
@@ -161,7 +159,7 @@ export default function Step3() {
 
 
     const toDisplay = {
-        'loading': <Loading radius={60} stroke={6} progress={progress} />,
+        'loading': <Loading progress={progress} text="Generating your images..." />,
         'ready': ''
     }
 
