@@ -7,7 +7,7 @@ import utils from '../../styles/utils.module.css'
 import stepStyle from '../../styles/step-4.module.css'
 import { useAppContext } from '../../context/AppContext'
 import { jsPDF } from 'jspdf'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import JSZip from 'jszip'
 import { saveAs } from 'file-saver'
 
@@ -22,6 +22,7 @@ export default function Step4() {
     const generatePDF = () => {
         for (let i = 0; i < allPages.length; i++) {
             const element = allPages[i].substring(22);
+            setProgress(((i + 1) / allPages.length) * 100)
             doc.addImage(element, 'PNG', 0, 0, 210, 297)
             doc.addPage()
         }
@@ -37,16 +38,12 @@ export default function Step4() {
     }
 
     const downoadZIP = () => {
+        generateZIP()
         zip.generateAsync({ type: "blob" })
             .then(function (content) {
                 saveAs(content, "download.zip");
             });
     }
-
-    useEffect(() => {
-        generatePDF()
-        generateZIP()
-    }, [])
 
     return (
         <div className={utils.container}>
@@ -66,7 +63,7 @@ export default function Step4() {
                 progress == 100 || progress == 0
                     ?
                     <div className={stepStyle.buttons}>
-                        <button onClick={() => { doc.save('ex.pdf') }} className={stepStyle.download} >Download PDF</button>
+                        <button onClick={() => { generatePDF(); doc.save('ex.pdf') }} className={stepStyle.download} >Download PDF</button>
                         <button onClick={() => downoadZIP()} className={stepStyle.download} >Download ZIP</button>
                     </div>
 
