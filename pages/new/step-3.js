@@ -138,13 +138,13 @@ export default function Step3() {
             var allP = []
             for (let i = 0; i < pages.length; i++) {
                 // const input = document.getElementsByClassName('thisIsAPage')[0];
-                setProgress(i / pages.length * 100)
+                setProgress((i + 1) / pages.length * 100)
                 let input = document.getElementById(i);
-                console.log(input.className, input.id)
                 let dataUrl;
                 try {
-                    dataUrl = await toPng(input, { pixelRatio: 2 });
+                    dataUrl = await toPng(input, { pixelRatio: 1 });
                     if (dataUrl) {
+                        console.log(dataUrl)
                         allP.push(dataUrl)
                     }
                 } catch (error) {
