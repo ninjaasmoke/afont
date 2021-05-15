@@ -41,7 +41,7 @@
 
 .h1Buttons a {
     position: fixed;
-    top: 100vh;
+    bottom: 2%;
     right: 2%;
     transform: translateX(2%);
     z-index: 1;

@@ -46,16 +46,6 @@ export default function Step2() {
                             <div>
                                 <h1 >Select your background style.</h1> <span style={{ fontFamily: specimen }} title="Selected font" >{specimen}{' '}⚡</span>
                             </div>
-                            <div className={utils.h1Buttons}>
-                                <Link href={{
-                                    pathname: "/new/step-3",
-                                    query: {
-                                        specimen: specimen
-                                    }
-                                }}>
-                                    Next &rarr;
-                                </Link>
-                            </div>
                         </div>
 
                         <div className={stepStyle.pickBG}>
@@ -80,6 +70,16 @@ export default function Step2() {
                                     ))
                                 }
                             </ul>
+                        </div>
+                        <div className={utils.h1Buttons}>
+                            <Link href={{
+                                pathname: "/new/step-3",
+                                query: {
+                                    specimen: specimen
+                                }
+                            }}>
+                                Next &rarr;
+                                </Link>
                         </div>
                     </div>
             }

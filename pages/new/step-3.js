@@ -184,11 +184,6 @@ export default function Step3() {
 
                         <div className={utils.h1}>
                             <div><h1>Add the text.</h1> <span style={{ fontFamily: specimen }} title="Selected font" >{specimen}{' '}⚡</span> </div>
-                            {showDisplay == 'ready' && <div className={utils.h1Buttons}>
-                                <button className={utils.nextButton + ' ' + utils.animateNext} onClick={() => download()} >
-                                    Download  →
-                                </button>
-                            </div>}
                         </div>
 
                         {toDisplay[showDisplay]}
@@ -255,6 +250,11 @@ export default function Step3() {
                             </div>
                         </div>
 
+                        {showDisplay == 'ready' && <div className={utils.h1Buttons}>
+                            <button className={utils.nextButton + ' ' + utils.animateNext} onClick={() => download()} >
+                                Download  →
+                                </button>
+                        </div>}
                     </div>
             }
         </>

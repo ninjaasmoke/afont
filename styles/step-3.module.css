@@ -151,6 +151,10 @@
     .currImg {
         width: 100%;
     }
+
+    .pageLeaf div {
+        min-width: 90%;
+    }
     
     .pageLeaf img {
         width: 100%;
