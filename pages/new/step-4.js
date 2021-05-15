@@ -61,14 +61,14 @@ export default function Step4() {
             <InstrStep steps={4} />
 
             <div className={utils.h1}>
-                <div><h1>Download your files.</h1> <span title="Selected font" >⚡</span> </div>
+                <div><h1>You are done! Download your files.</h1> <span title="Selected font" > 👋 ⚡</span> </div>
             </div>
             {
                 progress == 0
                     ?
                     <div className={stepStyle.buttons}>
-                        <button onClick={() => { generatePDF(); doc.save('Assignmentium.pdf') }} className={stepStyle.download} >Download PDF</button>
-                        <button onClick={() => downoadZIP()} className={stepStyle.download} >Download ZIP</button>
+                        <button onClick={() => { generatePDF(); doc.save('Assignmentium.pdf') }} className={stepStyle.download} >Download as PDF</button>
+                        <button onClick={() => downoadZIP()} className={stepStyle.download} >Download as ZIP &nbsp; <span>(Recommended)</span> </button>
                     </div>
 
                     :
@@ -78,7 +78,7 @@ export default function Step4() {
             }
             <div className={utils.nextButton}>
                 <Link href="/">
-                    &larr; Back home
+                    &larr; Go back home
                 </Link>
             </div>
         </div>
