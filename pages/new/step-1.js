@@ -24,7 +24,7 @@ export default function Step1({ fonts }) {
     return (
         <div className={styles.container}>
             <Head>
-                <title>Assignmentium | Create</title>
+                <title>Assignmentium | Create - Step 1</title>
             </Head>
 
             <Nav linkTo="/" navTitle="Create" />

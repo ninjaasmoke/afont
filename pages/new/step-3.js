@@ -172,7 +172,7 @@ export default function Step3() {
                     ? <FourOhFour />
                     : <div className={utils.container}>
                         <Head>
-                            <title>Assignmentium | Create</title>
+                            <title>Assignmentium | Create - Step 3</title>
                             <link rel="preconnect" href="https://fonts.gstatic.com" />
                         </Head>
 

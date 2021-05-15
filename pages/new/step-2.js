@@ -32,7 +32,7 @@ export default function Step2() {
                     ? <FourOhFour backUrl="/new/step-1" />
                     : <div className={utils.container}>
                         <Head>
-                            <title>Assignmentium | Create</title>
+                            <title>Assignmentium | Create - Step 2</title>
                             <link rel="preconnect" href="https://fonts.gstatic.com" />
                         </Head>
 
