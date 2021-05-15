@@ -141,7 +141,7 @@ export default function Step3() {
                 let input = document.getElementById(i);
                 let dataUrl;
                 try {
-                    dataUrl = await toPng(input, { pixelRatio: 1 });
+                    dataUrl = await toPng(input, { pixelRatio: 3 });
                     if (dataUrl) {
                         allP.push(dataUrl)
                     }
