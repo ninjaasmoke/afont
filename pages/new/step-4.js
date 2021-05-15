@@ -20,28 +20,32 @@ export default function Step4() {
     const [progress, setProgress] = useState(0)
 
     const generatePDF = () => {
+        setProgress(0.1)
         for (let i = 0; i < allPages.length; i++) {
             const element = allPages[i].substring(22);
             setProgress(((i + 1) / allPages.length) * 100)
             doc.addImage(element, 'PNG', 0, 0, 210, 297)
             doc.addPage()
         }
+        setProgress(0)
     }
 
     const generateZIP = () => {
+        setProgress(0.1)
         var img = zip.folder("Pages");
         for (let i = 0; i < allPages.length; i++) {
             const element = allPages[i].substring(22);
             setProgress(((i + 1) / allPages.length) * 100)
             img.file(i.toString() + '.png', element, { base64: true });
         }
+        setProgress(0)
     }
 
     const downoadZIP = () => {
         generateZIP()
         zip.generateAsync({ type: "blob" })
             .then(function (content) {
-                saveAs(content, "download.zip");
+                saveAs(content, "Assignmentium.zip");
             });
     }
 
@@ -60,10 +64,10 @@ export default function Step4() {
                 <div><h1>Download your files.</h1> <span title="Selected font" >⚡</span> </div>
             </div>
             {
-                progress == 100 || progress == 0
+                progress == 0
                     ?
                     <div className={stepStyle.buttons}>
-                        <button onClick={() => { generatePDF(); doc.save('ex.pdf') }} className={stepStyle.download} >Download PDF</button>
+                        <button onClick={() => { generatePDF(); doc.save('Assignmentium.pdf') }} className={stepStyle.download} >Download PDF</button>
                         <button onClick={() => downoadZIP()} className={stepStyle.download} >Download ZIP</button>
                     </div>
 
