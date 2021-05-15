@@ -10,6 +10,7 @@ import { jsPDF } from 'jspdf'
 import { useState } from 'react'
 import JSZip from 'jszip'
 import { saveAs } from 'file-saver'
+import FourOhFour from '../404'
 
 export default function Step4() {
 
@@ -50,37 +51,45 @@ export default function Step4() {
     }
 
     return (
-        <div className={utils.container}>
-            <Head>
-                <title>Assignmentium | Create</title>
-            </Head>
-
-
-            <Nav navTitle="Create" linkTo="/" />
-
-            <InstrStep steps={4} />
-
-            <div className={utils.h1}>
-                <div><h1>You are done! Download your files.</h1> <span title="Selected font" > 👋 ⚡</span> </div>
-            </div>
+        <>
             {
-                progress == 0
+                allPages.length == 0
                     ?
-                    <div className={stepStyle.buttons}>
-                        <button onClick={() => { generatePDF(); doc.save('Assignmentium.pdf') }} className={stepStyle.download} >Download as PDF</button>
-                        <button onClick={() => downoadZIP()} className={stepStyle.download} >Download as ZIP &nbsp; <span>(Recommended)</span> </button>
-                    </div>
-
+                    <FourOhFour />
                     :
-                    <>
-                        <Loading progress={progress} text="Generating PDF & ZIP" />
-                    </>
-            }
-            <div className={utils.nextButton}>
-                <Link href="/">
-                    &larr; Go back home
+                    <div className={utils.container}>
+                        <Head>
+                            <title>Assignmentium | Create</title>
+                        </Head>
+
+
+                        <Nav navTitle="Create" linkTo="/" />
+
+                        <InstrStep steps={4} />
+
+                        <div className={utils.h1}>
+                            <div><h1>You are done! Download your files.</h1> <span title="Selected font" > 👋 ⚡</span> </div>
+                        </div>
+                        {
+                            progress == 0
+                                ?
+                                <div className={stepStyle.buttons}>
+                                    <button onClick={() => { generatePDF(); doc.save('Assignmentium.pdf') }} className={stepStyle.download} >Download as PDF</button>
+                                    <button onClick={() => downoadZIP()} className={stepStyle.download} >Download as ZIP &nbsp; <span>(Recommended)</span> </button>
+                                </div>
+
+                                :
+                                <>
+                                    <Loading progress={progress} text="Generating PDF & ZIP" />
+                                </>
+                        }
+                        <div className={utils.nextButton}>
+                            <Link href="/">
+                                &larr; Go back home
                 </Link>
-            </div>
-        </div>
+                        </div>
+                    </div>
+            }
+        </>
     )
 }
