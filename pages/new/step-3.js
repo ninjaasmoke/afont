@@ -264,7 +264,7 @@ export default function Step3() {
 const Page = ({
     bgImg,
     specimen,
-    fColor,
+    color,
     fontSize,
     tPadding,
     lPadding,
@@ -288,7 +288,7 @@ const Page = ({
                     style={{
                         fontFamily: specimen,
                         padding: 8,
-                        color: fColor,
+                        color: color,
                         fontSize: fontSize + 'px',
                         fontWeight: fWeight,
                         paddingTop: tPadding + 'px',
