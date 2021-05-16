@@ -10,7 +10,7 @@ export default function Settings() {
     const { pixelRatio, setPixelRatio, stepMsg, setStepMsg, installable, handleInstallClick } = useAppContext()
 
     const pixelRatioMsg = {
-        1: 'Low resolution, Small size',
+        1: 'Very low resolution, Small size',
         2: 'Average resolution, Medium Size (Best)',
         3: 'High Resolution, Even higher size',
     }

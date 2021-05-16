@@ -15,12 +15,10 @@ import FourOhFour from '../404'
 export default function Step4() {
 
     const { allPages, stepMsg } = useAppContext()
-    const doc = new jsPDF();
-    const zip = new JSZip();
 
     const [progress, setProgress] = useState(0)
 
-    const generatePDF = () => {
+    const generatePDF = (doc) => {
         setProgress(0.1)
         const len = allPages.length;
         for (let i = 0; i < len; i++) {
@@ -32,7 +30,7 @@ export default function Step4() {
         setProgress(0)
     }
 
-    const generateZIP = () => {
+    const generateZIP = (zip) => {
         setProgress(0.1)
         var img = zip.folder("Pages");
         for (let i = 0; i < allPages.length; i++) {
@@ -44,8 +42,15 @@ export default function Step4() {
         setProgress(0)
     }
 
+    const downloadPDF = () => {
+        const doc = new jsPDF();
+        generatePDF(doc);
+        doc.save('Assignmentium.pdf')
+    }
+
     const downoadZIP = () => {
-        generateZIP()
+        const zip = new JSZip();
+        generateZIP(zip)
         zip.generateAsync({ type: "blob" })
             .then(function (content) {
                 saveAs(content, "Assignmentium.zip");
@@ -76,7 +81,7 @@ export default function Step4() {
                             progress == 0
                                 ?
                                 <div className={stepStyle.buttons}>
-                                    <button onClick={() => { generatePDF(); doc.save('Assignmentium.pdf') }} className={stepStyle.download} >Download as PDF</button>
+                                    <button onClick={() => downloadPDF()} className={stepStyle.download} >Download as PDF</button>
                                     <button onClick={() => downoadZIP()} className={stepStyle.download} >Download as ZIP &nbsp; <span>(Recommended)</span> </button>
                                 </div>
 
