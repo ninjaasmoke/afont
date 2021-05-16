@@ -55,7 +55,7 @@ export default function Home() {
 
           <div className={styles.grid}>
             <Link href="/new/step-1">
-              <a className={styles.card}>
+              <a className={styles.largeCard}>
                 <h2>New Assignment &rarr;</h2>
                 <p>Create a new assignment or document.</p>
               </a>
@@ -65,6 +65,13 @@ export default function Home() {
               <a className={styles.card}>
                 <h2>Learn &rarr;</h2>
                 <p>Learn how to make a new assignment or document.</p>
+              </a>
+            </Link>
+
+            <Link href="/settings">
+              <a className={styles.card}>
+                <h2>Settings &rarr;</h2>
+                <p>Few options that you can edit.</p>
               </a>
             </Link>
 

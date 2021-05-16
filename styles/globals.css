@@ -53,6 +53,9 @@ a:active {
   box-sizing: border-box;
 }
 
+select::-ms-expand {
+  display: none;
+}
 
 .toggle {
   z-index: 10;

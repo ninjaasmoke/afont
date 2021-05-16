@@ -1,6 +1,7 @@
-import { useContext, createContext, useState } from 'react'
+import { useContext, createContext, useState, useEffect } from 'react'
 import { getCookie, setCookie } from '../helper/cookies'
 import { fontOptions } from '../helper/fontOptions';
+import { IMAGE_PIXEL_RATIO } from '../helper/strings';
 
 const AppContext = createContext();
 
@@ -12,8 +13,15 @@ export function AppWrapper({ children }) {
     const [fontState, setFontState] = useState(fontOptions)
 
     const [selFont, setSelFont] = useState('')
-
+    const [pixelRatio, setPixelRatio] = useState(2)
     const [allPages, setAllPages] = useState([])
+
+    useEffect(() => {
+        let ipr = getCookie(IMAGE_PIXEL_RATIO)
+        if (ipr.length !== 0) {
+            setPixelRatio(parseInt(ipr))
+        }
+    }, [])
 
     return (
         <AppContext.Provider value=
@@ -22,6 +30,7 @@ export function AppWrapper({ children }) {
                 showMobileWarning,
                 selBgImgType,
                 fontState,
+                pixelRatio,
                 allPages,
                 selFont,
                 setShowCookieModal,
@@ -30,6 +39,7 @@ export function AppWrapper({ children }) {
                 setFontState,
                 setAllPages,
                 setSelFont,
+                setPixelRatio,
                 setCookie,
                 getCookie
             }}>

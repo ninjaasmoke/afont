@@ -79,7 +79,7 @@
   margin-top: 3rem;
 }
 
-.card {
+.card, .largeCard {
   margin: 1rem;
   padding: 1.5rem;
   text-align: left;
@@ -92,19 +92,26 @@
   min-height: 148px;
 }
 
+.largeCard {
+  width: 94%;
+}
+
 .card:hover,
 .card:focus,
-.card:active {
+.card:active,
+.largeCard:hover,
+.largeCard:focus,
+.largeCard:active {
   color: var(--accent);
   border-color: var(--accent);
 }
 
-.card h2 {
+.card h2, .largeCard h2 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
 }
 
-.card p {
+.card p, .largeCard p {
   margin: 0;
   font-size: 1.1rem;
   line-height: 1.5;
@@ -132,7 +139,7 @@
     flex-direction: column;
   }
 
-  .card {
+  .card, .largeCard {
     width: 75%;
   }
 
