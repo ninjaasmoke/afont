@@ -75,7 +75,7 @@ export default function Settings() {
                         <span className={utils.settingName}>
                             Save Documents (Coming soon)
                         </span>
-                        <span className={utils.settingSub}>Save documents to local storage.</span>
+                        <span className={utils.settingSub}>Save documents in-app so you can edit later.</span>
                     </div>
                     <select className={utils.settingAction + " " + utils.comingSoon} value={'true'} disabled >
                         <option value={'true'}>Save</option>
