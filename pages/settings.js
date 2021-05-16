@@ -7,7 +7,7 @@ import utils from '../styles/Settings.module.css'
 
 export default function Settings() {
 
-    const { pixelRatio, setPixelRatio, stepMsg, setStepMsg } = useAppContext()
+    const { pixelRatio, setPixelRatio, stepMsg, setStepMsg, installable, handleInstallClick } = useAppContext()
 
     const pixelRatioMsg = {
         1: 'Low resolution, Small size',
@@ -42,7 +42,24 @@ export default function Settings() {
                 <h1 className={utils.h1}>
                     App Options
                 </h1>
-                {/* <div className={utils.gridBreak} /> */}
+                <div className={utils.card}>
+                    <div className={utils.settingOption}>
+                        <span className={utils.settingName}>
+                            Install App
+                        </span>
+                        <span className={utils.settingSub}>
+                            {
+                                installable
+                                    ? 'Install this app to your device for offline use.'
+                                    : 'This app is either already installed or is not installable on your device.'
+                            }
+                        </span>
+                    </div>
+                    <button className={installable ? utils.installButton : utils.installButton + " " + utils.disabled} onClick={() => handleInstallClick()} >
+                        {installable ? 'Install' : 'Installed'}
+                    </button>
+                </div>
+                <div className={utils.gridBreak} />
                 <div className={utils.card}>
                     <div className={utils.settingOption}>
                         <span className={utils.settingName}>
@@ -70,8 +87,8 @@ export default function Settings() {
                     </select>
                 </div>
                 <div className={utils.gridBreak} />
-                <div className={utils.card + " " + utils.comingSoon}>
-                    <div className={utils.settingOption + " " + utils.comingSoon}>
+                <div className={utils.card + " " + utils.disabled}>
+                    <div className={utils.settingOption + " " + utils.disabled}>
                         <span className={utils.settingName}>
                             Save Documents (Coming soon)
                         </span>
