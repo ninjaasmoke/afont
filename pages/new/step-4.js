@@ -14,7 +14,7 @@ import FourOhFour from '../404'
 
 export default function Step4() {
 
-    const { allPages } = useAppContext()
+    const { allPages, stepMsg } = useAppContext()
     const doc = new jsPDF();
     const zip = new JSZip();
 
@@ -69,7 +69,7 @@ export default function Step4() {
 
                         <InstrStep steps={4} />
 
-                        <div className={utils.h1}>
+                        <div className={utils.h1} style={{ marginTop: stepMsg === 'true' ? '100px' : 0 }}>
                             <div><h1>You are done! Download your files.</h1> <span title="Selected font" > 👋 ⚡</span> </div>
                         </div>
                         {

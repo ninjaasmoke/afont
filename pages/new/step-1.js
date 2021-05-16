@@ -19,7 +19,7 @@ export async function getStaticProps() {
 
 export default function Step1({ fonts }) {
 
-    const { setSelFont } = useAppContext()
+    const { setSelFont, stepMsg } = useAppContext()
 
     return (
         <div className={styles.container}>
@@ -31,7 +31,7 @@ export default function Step1({ fonts }) {
 
             <InstrStep steps={1} />
 
-            <div className={utils.h1}><h1 >Pick a font.</h1></div>
+            <div className={utils.h1} style={{ marginTop: stepMsg === 'true' ? '100px' : 0 }} ><h1 >Pick a font.</h1></div>
 
             <ul className={utils.fonts}>
                 {fonts.map((font, index) => (

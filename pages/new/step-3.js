@@ -19,7 +19,7 @@ const updateFontElem = (attr, val) => getElement().forEach(c => c.style[attr] = 
 
 export default function Step3() {
 
-    const { selBgImgType, fontState, setFontState, setAllPages, allPages } = useAppContext()
+    const { selBgImgType, fontState, setFontState, setAllPages, allPages, stepMsg, pixelRatio } = useAppContext()
 
     const bgImgs = bgImages.filter(c => c.name == selBgImgType)[0]
 
@@ -141,7 +141,7 @@ export default function Step3() {
                 let input = document.getElementById(i);
                 let dataUrl;
                 try {
-                    dataUrl = await toPng(input, { pixelRatio: 3 });
+                    dataUrl = await toPng(input, { pixelRatio: parseInt(pixelRatio) });
                     if (dataUrl) {
                         allP.push(dataUrl)
                     }
@@ -182,7 +182,7 @@ export default function Step3() {
 
                         <InstrStep steps={3} />
 
-                        <div className={utils.h1}>
+                        <div className={utils.h1} style={{ marginTop: stepMsg === 'true' ? '100px' : 0 }} >
                             <div><h1>Add the text.</h1> <span style={{ fontFamily: specimen }} title="Selected font" >{specimen}{' '}⚡</span> </div>
                         </div>
 

@@ -14,7 +14,7 @@ import { bgImages } from '../../helper/bgImages'
 
 export default function Step2() {
 
-    const { selBgImgType, setSelBgImgType } = useAppContext()
+    const { selBgImgType, setSelBgImgType, stepMsg } = useAppContext()
 
     const router = useRouter();
     const {
@@ -42,7 +42,7 @@ export default function Step2() {
 
                         <InstrStep steps={2} />
 
-                        <div className={utils.h1}>
+                        <div className={utils.h1} style={{ marginTop: stepMsg === 'true' ? '100px' : 0 }} >
                             <div>
                                 <h1 >Select your background style.</h1> <span style={{ fontFamily: specimen }} title="Selected font" >{specimen}{' '}⚡</span>
                             </div>
