@@ -22,11 +22,12 @@ export default function Step4() {
 
     const generatePDF = () => {
         setProgress(0.1)
-        for (let i = 0; i < allPages.length; i++) {
+        const len = allPages.length;
+        for (let i = 0; i < len; i++) {
             const element = allPages[i].substring(22);
-            setProgress(((i + 1) / allPages.length) * 100)
+            setProgress(((i + 1) / len) * 100)
             doc.addImage(element, 'PNG', 0, 0, 210, 297)
-            doc.addPage()
+            if (i !== len) doc.addPage()
         }
         setProgress(0)
     }
@@ -38,6 +39,7 @@ export default function Step4() {
             const element = allPages[i].substring(22);
             setProgress(((i + 1) / allPages.length) * 100)
             img.file(i.toString() + '.png', element, { base64: true });
+            // setTimeout(() => { }, 100) // try adding delay
         }
         setProgress(0)
     }
@@ -86,7 +88,7 @@ export default function Step4() {
                         <div className={utils.nextButton}>
                             <Link href="/">
                                 &larr; Go back home
-                </Link>
+                            </Link>
                         </div>
                     </div>
             }

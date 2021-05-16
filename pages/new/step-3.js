@@ -250,8 +250,8 @@ export default function Step3() {
                             </div>
                         </div>
 
-                        {showDisplay == 'ready' && <div className={utils.h1Buttons}>
-                            <button className={utils.nextButton + ' ' + utils.animateNext} onClick={() => download()} >
+                        {showDisplay == 'ready' && <div className={utils.bottomButton}>
+                            <button onClick={() => download()} >
                                 Download  →
                                 </button>
                         </div>}

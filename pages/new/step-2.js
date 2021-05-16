@@ -71,7 +71,7 @@ export default function Step2() {
                                 }
                             </ul>
                         </div>
-                        <div className={utils.h1Buttons}>
+                        {/* <div className={utils.h1Buttons}>
                             <Link href={{
                                 pathname: "/new/step-3",
                                 query: {
@@ -80,7 +80,19 @@ export default function Step2() {
                             }}>
                                 Next &rarr;
                                 </Link>
+                        </div> */}
+
+                        <div className={utils.bottomButton} >
+                            <Link href={{
+                                pathname: "/new/step-3",
+                                query: {
+                                    specimen: specimen
+                                }
+                            }}>
+                                Next &rarr;
+                            </Link>
                         </div>
+
                     </div>
             }
         </>

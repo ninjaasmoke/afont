@@ -3,7 +3,7 @@
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    padding: 0 32px 32px;
+    padding: 0 32px 80px;
     overflow-y: hidden;
 }
 
@@ -146,6 +146,7 @@
 @media (max-width: 976px) {
     .editWrapper { 
         flex-direction: column;
+        padding-bottom: 60px;
     }
 
     .currImg {

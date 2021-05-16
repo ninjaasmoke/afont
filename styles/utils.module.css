@@ -40,14 +40,14 @@
 }
 
 .h1Buttons a {
-    position: fixed;
-    bottom: 2%;
+    /* position: fixed;
+    top: 102%;
     right: 2%;
     transform: translateX(2%);
     z-index: 1;
     padding: 12px 24px;
 
-    animation: animButton 300ms ease 400ms forwards;
+    animation: animButton 300ms ease 400ms forwards; */
 }
 
 @keyframes animButton {
@@ -72,8 +72,8 @@
     border: none;
     color: white;
     font-family: 'Raleway', sans-serif;
-    padding: 8px 16px;
-    font-size: 14px;
+    padding: 12px 16px;
+    font-size: 16px;
     cursor: pointer;
     transition-duration: 200ms;
 }
@@ -107,6 +107,42 @@
 }
 
 .nextButton a:hover {
+    color: white;
+}
+
+.bottomButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 24px;
+    text-align: center;
+    background-color: var(--accent);
+    color: white;
+    min-height: 20px;
+    display: flex;
+    justify-content: center;
+    border-radius: 100px;
+    transition-duration: 300ms;
+    cursor: pointer;
+}
+
+.bottomButton:hover {
+    box-shadow: 0px 0px 1px 10px #0071f32d;
+}
+
+.bottomButton a, .bottomButton button {
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.bottomButton a:hover {
     color: white;
 }
 
@@ -180,14 +216,46 @@
         grid-template-columns: auto;
     }
 
-    .h1Buttons a {
-        right: 10%;
+    /* .h1Buttons {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        min-height: 40px;
+    } */
+
+    /* .h1Buttons a {
+        min-width: 100%;
+        
         transform: translateX(10%);
 
         animation: animButton 300ms ease-in 400ms forwards;
+    } */
+
+    
+    .bottomButton {
+        position: fixed;
+        bottom: -60px;
+        right: 0px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 8px;
+        animation: animBotButton 300ms ease-in 400ms forwards;
+        
+        border-radius: 0px;
     }
 
-    @keyframes animButton {
-        to {top: calc(100vh - 48px)}
+    @keyframes animBotButton {
+        from {opacity: 0;}
+        to {bottom: 0px; opacity: 1;}
+    }
+
+    .bottomButton a, .bottomButton button {
+        font-family: inherit;
+        width: 100%;
+    }
+
+    .bottomButton a:hover {
+        color: white;
     }
 }
