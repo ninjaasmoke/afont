@@ -90,7 +90,7 @@ select::-ms-expand {
   --bg: white;
   --color: black;
   --hoverColor: transparent;
-  --gray: #505050;
+  --gray: #636363;
 }
 
 @media (max-width: 600px) {
