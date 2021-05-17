@@ -4,7 +4,7 @@
     top: -52px;
     background-color: var(--bg);
     border-bottom: 1px solid #7c7c7c30;
-    min-height: 50px;
+    min-height: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,10 +13,4 @@
 
 .h4 {
     color: var(--accent);
-}
-
-@media (max-width: 600px) {
-    .homenav {
-        min-height: 50px;
-    }
 }
