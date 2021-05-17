@@ -6,6 +6,7 @@ import Modal from '../components/modal'
 import { useAppContext } from '../context/AppContext'
 import styles from '../styles/Home.module.css'
 import * as Strings from '../helper/strings'
+import HomeNav from '../components/homenav'
 
 export default function Home() {
 
@@ -41,6 +42,8 @@ export default function Home() {
           Just choose your favorite handwriting, paste your text, and your assignment is ready to go." />
           <link rel="icon" href="/favicon.ico" />
         </Head>
+
+        <HomeNav />
 
         <main className={styles.main}>
           <h1 className={styles.title}>
