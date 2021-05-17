@@ -16,7 +16,7 @@ export default function HomeNav() {
         })
     }, [])
     return (
-        <nav className={navStyle.nav} id="homenav">
+        <nav className={navStyle.homenav} id="homenav">
             <h4 className={navStyle.h4}>Assignmentium</h4>
         </nav>
     )
