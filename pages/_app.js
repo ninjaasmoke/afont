@@ -88,6 +88,8 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:image:height" content="512" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@nithins944" />
+
+        <meta name="google-site-verification" content="o9SqF81YuP8NXcL8pKat0K3rFMAyKoBsP5HCfYP4u5I" />
       </Head>
       <input id="toggle" className="toggle" type="checkbox" title="Toggle Dark Mode" onClick={toggleDarkMode} />
       <div className="background">
