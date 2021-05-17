@@ -1,10 +1,10 @@
 .homenav {
     width: 100%;
     position: fixed;
-    top: -50px;
+    top: -52px;
     background-color: var(--bg);
     border-bottom: 1px solid #7c7c7c30;
-    min-height: 52px;
+    min-height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,6 +17,6 @@
 
 @media (max-width: 600px) {
     .homenav {
-        min-height: 52px;
+        min-height: 50px;
     }
 }
