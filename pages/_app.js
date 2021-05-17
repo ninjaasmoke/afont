@@ -81,7 +81,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           property="og:image"
-          itemprop="image"
+          itemProp="image"
           content="https://i.ibb.co/yd1Yygb/icon-512x512.png"
         />
         <meta property="og:image:width" content="512" />
