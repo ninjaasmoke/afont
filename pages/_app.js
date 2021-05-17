@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="author" content="ninjaasmoke" />
         <meta name="copyright" content="ninjaasmoke" />
-        <meta name="robots" content="follow" />
+        <meta name="robots" content="index, follow" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Assignmentium" />
         <meta
