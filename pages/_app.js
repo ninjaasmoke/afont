@@ -54,6 +54,40 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content={!darkTheme ? "#18181d" : "#fff"} />
+        <meta
+          name="keywords"
+          content="afont,afonts,online assignments, assignments, text to handwriting, text-to-handwrting, assignmentium, ninjaasmoke, convert text to image, write assignment online"
+        />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="author" content="ninjaasmoke" />
+        <meta name="copyright" content="ninjaasmoke" />
+        <meta name="robots" content="follow" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Assignmentium" />
+        <meta
+          property="og:url"
+          content="https://github.com/ninjaasmoke/afont"
+        />
+        <meta
+          property="og:description"
+          content="Bored of writing too many assignments? Just copy past your text to make assignments with handwriting like fonts!"
+        />
+        <meta property="og:site_name" content="Assignmentium" />
+
+        <meta
+          property="og:image:secure_url"
+          itemprop="image"
+          content="https://i.ibb.co/yd1Yygb/icon-512x512.png"
+        />
+        <meta
+          property="og:image"
+          itemprop="image"
+          content="https://i.ibb.co/yd1Yygb/icon-512x512.png"
+        />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@nithins944" />
       </Head>
       <input id="toggle" className="toggle" type="checkbox" title="Toggle Dark Mode" onClick={toggleDarkMode} />
       <div className="background">

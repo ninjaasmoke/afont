@@ -37,9 +37,7 @@ export default function Home() {
       <div className={styles.container}>
         <Head>
           <title>Assignmentium | Home</title>
-          <meta name="description" content="Got bored of writing too many assignments? Too much to write?
-          Worry not, ASSIGNMENTIUM is here!
-          Just choose your favorite handwriting, paste your text, and your assignment is ready to go." />
+          <meta name="description" content="Bored of writing too many assignments? Just copy past your text to make assignments with handwriting like fonts!" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
