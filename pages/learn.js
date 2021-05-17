@@ -88,7 +88,7 @@ export default function Learn() {
                 </div>
                 <div className={learnStyles.step}>
                     <h2 className={learnStyles.h2} >
-                        Disable Steps
+                        Disable step instructions
                     </h2>
                     <p className={learnStyles.instr}>
                         Navigate to <code>Settings</code> page from home page.
