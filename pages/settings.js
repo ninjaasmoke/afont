@@ -12,7 +12,8 @@ export default function Settings() {
     const pixelRatioMsg = {
         1: 'Very low resolution, Small size',
         2: 'Average resolution, Medium Size (Best)',
-        3: 'High Resolution, Even higher size',
+        3: 'High Resolution, Even higher size (takes more time)',
+        4: 'You absolute mad lad. What are your intentions?'
     }
 
     const showStepsMsg = {
@@ -71,6 +72,7 @@ export default function Settings() {
                         <option value={1} >1</option>
                         <option value={2} >2</option>
                         <option value={3} >3</option>
+                        <option value={4} >4</option>
                     </select>
                 </div>
                 <div className={utils.gridBreak} />
