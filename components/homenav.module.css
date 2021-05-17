@@ -4,7 +4,7 @@
     top: -52px;
     background-color: var(--bg);
     border-bottom: 1px solid #7c7c7c30;
-    min-height: 48px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
