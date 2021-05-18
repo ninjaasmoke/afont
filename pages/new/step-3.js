@@ -197,10 +197,10 @@ export default function Step3() {
                                     <input type="range" min="10" max="30" value={fontSize} onChange={e => handleFont(e)} className="slider" id="fontSize" name="fontSize" />
 
                                     <label htmlFor="tPadding">Top Padding: {tPadding}</label>
-                                    <input type="range" min="0" max="100" step="2" value={tPadding} onChange={e => handleTPadding(e)} className="slider" id="tPadding" name="tPadding" />
+                                    <input type="range" min="0" max="180" step="1" value={tPadding} onChange={e => handleTPadding(e)} className="slider" id="tPadding" name="tPadding" />
 
                                     <label htmlFor="lPadding">Left Padding: {lPadding}</label>
-                                    <input type="range" min="0" max="100" step="2" value={lPadding} onChange={e => handleLPadding(e)} className="slider" id="lPadding" name="lPadding" />
+                                    <input type="range" min="0" max="180" step="1" value={lPadding} onChange={e => handleLPadding(e)} className="slider" id="lPadding" name="lPadding" />
 
                                     <label htmlFor="lSpace">Letter Spacing: {lSpace}</label>
                                     <input type="range" min="0" max="8" value={lSpace} onChange={e => handleLSpace(e)} className="slider" id="lSpace" name="lSpace" />
@@ -209,7 +209,7 @@ export default function Step3() {
                                     <input type="range" min="0" max="8" value={wSpace} onChange={e => handleWSpace(e)} className="slider" id="wSpace" name="wSpace" />
 
                                     <label htmlFor="lHeight">Line Height: {lHeight} <span className={stepStyle.caution}>Use with caution.</span> </label>
-                                    <input type="range" min="12" max="30" step="1" value={lHeight} onChange={e => handleLHeight(e)} className="slider" id="lHeight" name="lHeight" />
+                                    <input type="range" min="12" max="30" value={lHeight} onChange={e => handleLHeight(e)} className="slider" id="lHeight" name="lHeight" />
 
                                     {/* <label htmlFor="fWeight">Font Weight: {fWeight}</label>
         <input type="range" min="400" max="700" step="100" value={fWeight} onChange={e => handleFWeight(e)} className="slider" id="lHeight" name="lHeight" /> */}
