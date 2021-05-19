@@ -31,6 +31,7 @@ export default function Step3() {
 
     const [fontSize, setFontSize] = useState(fontState.fontSize)
     const [lPadding, setlPadding] = useState(fontState.paddingLeft)
+    const [rPadding, setrPadding] = useState(fontState.paddingRight)
     const [tPadding, settPadding] = useState(fontState.paddingTop)
     const [lSpace, setLSpace] = useState(fontState.letterSpacing)
     const [wSpace, setWSpace] = useState(fontState.wordSpacing)
@@ -48,6 +49,7 @@ export default function Step3() {
         fontSize={fontSize}
         tPadding={tPadding}
         lPadding={lPadding}
+        rPadding={rPadding}
         lSpace={lSpace}
         wSpace={wSpace}
         lHeight={lHeight}
@@ -66,6 +68,12 @@ export default function Step3() {
         setlPadding(e.target.value)
         setFontState({ ...fontState, paddingLeft: lPadding })
         updateFontElem('paddingLeft', e.target.value + 'px')
+    }
+
+    const handleRPadding = (e) => {
+        setrPadding(e.target.value)
+        setFontState({ ...fontState, paddingRight: rPadding })
+        updateFontElem('paddingRight', e.target.value + 'px')
     }
 
     const handleTPadding = (e) => {
@@ -201,6 +209,9 @@ export default function Step3() {
 
                                     <label htmlFor="lPadding">Left Padding: {lPadding}</label>
                                     <input type="range" min="0" max="180" step="1" value={lPadding} onChange={e => handleLPadding(e)} className="slider" id="lPadding" name="lPadding" />
+
+                                    <label htmlFor="rPadding">Right Padding: {rPadding}</label>
+                                    <input type="range" min="0" max="180" step="1" value={rPadding} onChange={e => handleRPadding(e)} className="slider" id="rPadding" name="rPadding" />
 
                                     <label htmlFor="lSpace">Letter Spacing: {lSpace}</label>
                                     <input type="range" min="0" max="8" value={lSpace} onChange={e => handleLSpace(e)} className="slider" id="lSpace" name="lSpace" />
