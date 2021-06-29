@@ -4,6 +4,7 @@ import { AppWrapper } from '../context/AppContext'
 import '../styles/globals.css'
 import { getCookie, setCookie } from '../helper/cookies'
 import { DARK_MODE_ON } from '../helper/strings'
+import { StorageWrapper } from '../context/StorageContext'
 
 function MyApp({ Component, pageProps }) {
 
@@ -28,73 +29,75 @@ function MyApp({ Component, pageProps }) {
   }, [])
   return (
     <AppWrapper>
-      <Head>
-        <meta charSet="utf-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1,minimum-scale=1"
-        />
-        <meta name="description" content="Description" />
-        <meta name="keywords" content="Keywords" />
-        <title>Assignmentium</title>
+      <StorageWrapper>
+        <Head>
+          <meta charSet="utf-8" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+          <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,minimum-scale=1"
+          />
+          <meta name="description" content="Description" />
+          <meta name="keywords" content="Keywords" />
+          <title>Assignmentium</title>
 
-        <link rel="manifest" href="/manifest.webmanifest" />
-        <link
-          href="/icons/favicon-16x16.png"
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-        />
-        <link
-          href="/icons/favicon-32x32.png"
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-        />
-        <link rel="apple-touch-icon" href="/apple-icon.png"></link>
-        <meta name="theme-color" content={!darkTheme ? "#18181d" : "#fff"} />
-        <meta
-          name="keywords"
-          content="afont,afonts,online assignments, assignments, text to handwriting, text-to-handwrting, assignmentium, ninjaasmoke, convert text to image, write assignment online"
-        />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="author" content="ninjaasmoke" />
-        <meta name="copyright" content="ninjaasmoke" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Assignmentium" />
-        <meta
-          property="og:url"
-          content="https://github.com/ninjaasmoke/afont"
-        />
-        <meta
-          property="og:description"
-          content="Bored of writing too many assignments? Just copy past your text to make assignments with handwriting like fonts!"
-        />
-        <meta property="og:site_name" content="Assignmentium" />
+          <link rel="manifest" href="/manifest.webmanifest" />
+          <link
+            href="/icons/favicon-16x16.png"
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+          />
+          <link
+            href="/icons/favicon-32x32.png"
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+          />
+          <link rel="apple-touch-icon" href="/apple-icon.png"></link>
+          <meta name="theme-color" content={!darkTheme ? "#18181d" : "#fff"} />
+          <meta
+            name="keywords"
+            content="afont,afonts,online assignments, assignments, text to handwriting, text-to-handwrting, assignmentium, ninjaasmoke, convert text to image, write assignment online"
+          />
+          <meta name="mobile-web-app-capable" content="yes" />
+          <meta name="author" content="ninjaasmoke" />
+          <meta name="copyright" content="ninjaasmoke" />
+          <meta name="robots" content="index, follow" />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="Assignmentium" />
+          <meta
+            property="og:url"
+            content="https://github.com/ninjaasmoke/afont"
+          />
+          <meta
+            property="og:description"
+            content="Bored of writing too many assignments? Just copy past your text to make assignments with handwriting like fonts!"
+          />
+          <meta property="og:site_name" content="Assignmentium" />
 
-        <meta
-          property="og:image:secure_url"
-          itemprop="image"
-          content="https://i.ibb.co/yd1Yygb/icon-512x512.png"
-        />
-        <meta
-          property="og:image"
-          itemProp="image"
-          content="https://i.ibb.co/yd1Yygb/icon-512x512.png"
-        />
-        <meta property="og:image:width" content="512" />
-        <meta property="og:image:height" content="512" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:creator" content="@nithins944" />
+          <meta
+            property="og:image:secure_url"
+            itemProp="image"
+            content="https://i.ibb.co/yd1Yygb/icon-512x512.png"
+          />
+          <meta
+            property="og:image"
+            itemProp="image"
+            content="https://i.ibb.co/yd1Yygb/icon-512x512.png"
+          />
+          <meta property="og:image:width" content="512" />
+          <meta property="og:image:height" content="512" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:creator" content="@nithins944" />
 
-        <meta name="google-site-verification" content="o9SqF81YuP8NXcL8pKat0K3rFMAyKoBsP5HCfYP4u5I" />
-      </Head>
-      <input id="toggle" className="toggle" type="checkbox" title="Toggle Dark Mode" onClick={toggleDarkMode} />
-      <div className="background">
-        <Component {...pageProps} />
-      </div>
+          <meta name="google-site-verification" content="o9SqF81YuP8NXcL8pKat0K3rFMAyKoBsP5HCfYP4u5I" />
+        </Head>
+        <input id="toggle" className="toggle" type="checkbox" title="Toggle Dark Mode" onClick={toggleDarkMode} />
+        <div className="background">
+          <Component {...pageProps} />
+        </div>
+      </StorageWrapper>
     </AppWrapper>
   )
 }

@@ -101,3 +101,10 @@ select::-ms-expand {
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Architects+Daughter&family=Beth+Ellen&family=Cedarville+Cursive&family=Dawning+of+a+New+Day&family=Give+You+Glory&family=Gloria+Hallelujah&family=Homemade+Apple&family=Indie+Flower&family=League+Script&family=Mr+De+Haviland&family=Nothing+You+Could+Do&family=Sacramento&family=The+Girl+Next+Door&family=Zeyada&display=swap');
+
+/* MY FONT */
+
+@font-face {
+  font-family: 'Nithin';
+  src: url('/fonts/Nithin-Regular.ttf');
+}

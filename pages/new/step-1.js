@@ -43,7 +43,7 @@ export default function Step1({ fonts }) {
                             <span className={utils.fontName}>{font}</span>
                             <p className={utils.fontText} style={{ fontFamily: '"' + font + '"', }}>
                                 The quick brown fox jumps over the lazy fox.
-                                </p>
+                            </p>
                         </a>
                     </Link>
                 ))}

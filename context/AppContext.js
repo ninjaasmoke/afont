@@ -22,10 +22,6 @@ export function AppWrapper({ children }) {
     const [deferredPrompt, setdeferredPrompt] = useState()
 
     const handleInstallClick = (dp = deferredPrompt) => {
-        // Hide the app provided install promotion
-
-        // Show the install prompt
-        console.log(dp)
         dp.prompt();
         // Wait for the user to respond to the prompt
         dp.userChoice.then((choiceResult) => {
